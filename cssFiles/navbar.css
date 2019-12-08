@@ -17,7 +17,7 @@ a:hover { color: #777; }
   width: 250px; 
   height: 40px; 
   margin: 20px auto;
-  background: #95C11F;
+  background: #D3D3D3;
 }
 
 .navigation, .navigation a.main {
@@ -38,7 +38,7 @@ a:hover { color: #777; }
   font: bold 15px/40px arial, sans-serif; 
   text-align: center; 
   text-decoration: none; 
-  color: #FFF;  
+  color: #14ebaa;  
   -webkit-transition: 0.2s ease-in-out;
   -o-transition: 0.2s ease-in-out;
   transition: 0.2s ease-in-out;
@@ -125,4 +125,20 @@ a:hover { color: #777; }
   -webkit-transition-delay: 0.8s;
   -o-transition-delay: 0.8s;
   transition-delay: 0.8s;
+}
+
+header, .full-width {
+  width: 100%;
+  background: #14ebaa;
+}
+.wrap {
+  width: 80%;
+  max-width: 24em;
+  margin: 0 auto;
+  padding: 0.25em 0.625em;
+  color: #14ebaa;
+}
+
+.searchbartitle {
+  color: #808080;
 }

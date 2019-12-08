@@ -18,23 +18,38 @@
         padding: 0;
       }
     </style>
-            <link rel="stylesheet" href="cssFiles/navbar.css" />
+    <link rel="stylesheet" href="cssFiles/navbar.css" />
   </head>
   <body>
-      <ul class="navigation">
-          <a class="main" href="#url">Navigation #1</a>
-          <li class="n1"><a href="index.html">item #1</a></li>
-          <li class="n2"><a href="PostPage.html">item #2</a></li>
-          <li class="n3"><a href="register.html">item #3</a></li>
-          <li class="n4"><a href="#">item #4</a></li>
-          <li class="n5"><a href="#">item #5</a></li>
-        </ul>
+      <header>
+          <div class="wrap">
+              <ul class="navigation">
+                  <a class="main" href="#url">FarmerMap</a>
+                  <li class="n1"><a href="index.html">item #1</a></li>
+                  <li class="n2"><a href="PostPage.html">item #2</a></li>
+                  <li class="n3"><a href="register.html">item #3</a></li>
+                  <li>
+                      <div class="searchbartitle">
+                          <div>
+                              Search: <input type="text" name="searchbar">
+                              <form></form>
+                          </div>
+                      </div>
+                  </li>
+                </ul>
+          </div>
+        </header>
 
-    <div align="center">
-        <h1>Farmer Map</h1>
-        Search: <input type="text" name="searchbar">
-        <form></form>
-    </div>
+    <header>
+        <div class="wrap">
+          <h5>Header</h5>
+        </div>
+      </header>
+      <header>
+          <div class="wrap">
+            <h5>Header</h5>
+          </div>
+        </header>
     <div id="map"></div>
     <script>
       var map;
