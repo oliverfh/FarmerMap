@@ -142,3 +142,31 @@ header, .full-width {
 #farmermaptitle {
   color: #05386B;
 }
+
+#listingbutton {
+  padding: 0;
+  width: 100px; 
+  height: 40px; 
+  margin: 20px auto;
+  background: #05386B;
+}
+
+button.orange {
+  color: #00D1B2;
+  border: 1px solid #05386B; 
+  background: -webkit-linear-gradient(top, #05386B, #05386B);
+  background: -moz-linear-gradient(top, #05386B, #05386B);
+  background: -ms-linear-gradient(top, #05386B, #05386B);
+}
+
+button.orange:hover {
+  border: 1px solid #05386B;
+  background: -webkit-linear-gradient(top, #05386B, #05386B); 
+  background: -moz-linear-gradient(top, #05386B, #05386B); 
+  background: -ms-linear-gradient(top, #05386B, #05386B); 
+  box-shadow: 0 1px #EFEFEF;
+}
+
+button.orange:active {
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.3);
+}
