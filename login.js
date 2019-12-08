@@ -29,7 +29,9 @@ async function login(e) {
     console.log(result);
     let token = result.data.jwt;
     console.log(token);
-    localStorage.setItem('token',token)
+    localStorage.setItem('token',token);
+    window.location.href = "/PostPage.html";
+
 }
 
     

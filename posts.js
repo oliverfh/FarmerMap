@@ -2,6 +2,8 @@ function posts() {
   for(let i = 0; i < 3; i++) {
     $("#posts").append(renderPost());
 }
+$('#posts').on('click','#makelisting',makeListing);
+
 }
 
 function renderPost() {
@@ -26,20 +28,19 @@ function renderPost() {
       </div>
     </div>
     `
-   
     return head;
 }
 
-function makeListing() {
-  let head = '';
-  head = `
+function makeListing(e) {
+  console.log("fired");
+  let head = `
   <div class="card" align="center">
     <div class="card-content">
   
       <div class="content">
-        <input placeholder="Add listing here" id="listingform"></input>
+        Bruh ipsum dolor sit amet, consectetur adipiscing elit.
+        Phasellus nec iaculis mauris.
         <br>
-        <button id="newlisting">Create Listing</button>
       </div>
     </div>
   </div>
