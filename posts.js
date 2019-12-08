@@ -37,9 +37,9 @@ function makeListing() {
     <div class="card-content">
   
       <div class="content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        Phasellus nec iaculis mauris.
+        <input placeholder="Add listing here" id="listingform"></input>
         <br>
+        <button id="newlisting">Create Listing</button>
       </div>
     </div>
   </div>
