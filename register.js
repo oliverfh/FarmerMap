@@ -3,7 +3,7 @@
 
 
 $(function() {
-    loadShit();
+    handleEvents();
 });
 
 function handleEvents() {
