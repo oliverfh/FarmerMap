@@ -17,7 +17,7 @@ a:hover { color: #777; }
   width: 250px; 
   height: 40px; 
   margin: 20px auto;
-  background: #D3D3D3;
+  background: #A9A9A9;
 }
 
 .navigation, .navigation a.main {
@@ -142,3 +142,21 @@ header, .full-width {
 .searchbartitle {
   color: #808080;
 }
+
+#top, #bottom, #left, #right {
+	background: #a5ebff;
+	position: fixed;
+	}
+	#left, #right {
+		top: 0; bottom: 0;
+		width: 15px;
+		}
+		#left { left: 0; }
+		#right { right: 0; }
+		
+	#top, #bottom {
+		left: 0; right: 0;
+		height: 15px;
+		}
+		#top { top: 0; }
+		#bottom { bottom: 0; }
