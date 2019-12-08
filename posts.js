@@ -1,3 +1,9 @@
+function posts() {
+  for(let i = 0; i < 3; i++) {
+    $("#posts").append(renderPost());
+}
+}
+
 function renderPost() {
     let head = ``
     head = `
@@ -24,6 +30,23 @@ function renderPost() {
     return head;
 }
 
-for(let i = 0; i < 50; i++) {
-    $("#posts").append(renderPost());
+function makeListing() {
+  let head = '';
+  head = `
+  <div class="card" align="center">
+    <div class="card-content">
+  
+      <div class="content">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Phasellus nec iaculis mauris.
+        <br>
+      </div>
+    </div>
+  </div>
+  `
+  $("#posts").prepend(head);
 }
+
+$(function() {
+  posts();
+});

@@ -142,11 +142,3 @@ header, .full-width {
 #farmermaptitle {
   color: #05386B;
 }
-
-#listingbutton {
-  padding: 0;
-  width: 100px; 
-  height: 40px; 
-  margin: 20px auto;
-  background: #05386B;
-}
