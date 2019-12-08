@@ -13,7 +13,7 @@
 
     <body>
             <section class="hero is-primary is-fullheight">
-                    <div class="hero-body">
+                    <div id="reg", class="hero-body">
                       <div class="container">
                         <div class="columns is-centered">
                           <div class="column is-5-tablet is-4-desktop is-3-widescreen">
@@ -23,7 +23,7 @@
                                     <div class="field">
                                             <label for="" class="label">Name</label>
                                             <div class="control has-icons-left">
-                                              <input type="name" placeholder="" class="input" required>
+                                              <input id="name",type="name" placeholder="" class="input" required>
                                               <span class="icon is-small is-left">
                                                 <i class="fa fa-lock"></i>
                                               </span>
@@ -31,7 +31,7 @@
                                           </div>
                                 <label for="" class="label">Email</label>
                                 <div class="control has-icons-left">
-                                  <input type="email" placeholder="e.g. bobsmith@gmail.com" class="input" required>
+                                  <input id="email", type="email" placeholder="e.g. bobsmith@gmail.com" class="input" required>
                                   <span class="icon is-small is-left">
                                     <i class="fa fa-envelope"></i>
                                   </span>
@@ -40,7 +40,7 @@
                               <div class="field">
                                 <label for="" class="label">Password</label>
                                 <div class="control has-icons-left">
-                                  <input type="password" placeholder="*******" class="input" required>
+                                  <input id="pass", type="password" placeholder="*******" class="input" required>
                                   <span class="icon is-small is-left">
                                     <i class="fa fa-lock"></i>
                                   </span>
@@ -49,6 +49,8 @@
                               <div class="field">
                                 <button class="button is-success">
                                   <a href="index.html">Login</a>
+                                <button id="makeAcc" class="button is-success">
+                                  Login
                                 </button>
                               </div>
                               <div>
@@ -60,5 +62,8 @@
                       </div>
                     </div>
                   </section>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="register.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </body>
 </html>
