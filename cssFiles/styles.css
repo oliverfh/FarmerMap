@@ -22,7 +22,7 @@
   #login .login-card .content {
     padding: 3rem 2.5rem 5rem;
   }
-  #login .login-card #email, #login .login-card #password {
+  #login .login-card #email, #login .login-card #password, #login .login-card #name {
     display: block;
     width: 100%;
     font-size: 1rem;
@@ -32,10 +32,10 @@
     border-bottom: 1px solid #dbdbdb;
     transition: all .5s;
   }
-  #login .login-card #email:hover, #login .login-card #password:hover {
+  #login .login-card #email:hover, #login .login-card #password:hover, #login .login-card #name:hover {
     border-color: #7a7a7a;
   }
-  #login .login-card #email:active, #login .login-card #email:focus, #login .login-card #password:active, #login .login-card #password:focus {
+  #login .login-card #email:active, #login .login-card #email:focus, #login .login-card #password:active, #login .login-card #password:focus, #login .login-card #name:active, #login .login-card #name.focus {
     border-color:  #14ebaa;
   }
   #login .login-card .checkbox {
