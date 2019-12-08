@@ -1,4 +1,4 @@
-import {setToken} from "../config/Token";
+import {setToken} from "../../config/Token";
 import {getAxiosInstance} from "../../config/Axios";
 
 const axios = getAxiosInstance('/account');
