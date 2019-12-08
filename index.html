@@ -13,7 +13,7 @@
 
     <body>
         <section class="hero is-primary is-fullheight">
-                <div class="hero-body">
+                <div id = "log", class="hero-body">
                   <div class="container">
                     <div class="columns is-centered">
                       <div class="column is-5-tablet is-4-desktop is-3-widescreen">
@@ -22,7 +22,7 @@
                           <div class="field">
                             <label for="" class="label">Username</label>
                             <div class="control has-icons-left">
-                              <input type="Username" placeholder="User" class="input" required>
+                              <input id="username", type="Username" placeholder="User" class="input" required>
                               <span class="icon is-small is-left">
                                 <i class="fa fa-envelope"></i>
                               </span>
@@ -31,15 +31,15 @@
                           <div class="field">
                             <label for="" class="label">Password</label>
                             <div class="control has-icons-left">
-                              <input type="password" placeholder="*******" class="input" required>
+                              <input id="pass" type="password" placeholder="*******" class="input" required>
                               <span class="icon is-small is-left">
                                 <i class="fa fa-lock"></i>
                               </span>
                             </div>
                           </div>
                           <div class="field">
-                            <button class="button is-success">
-                              <a href="PostPage.html">Login</a>
+                            <button id="login",class="button is-success">
+                              Login
                             </button>
                           </div>
                           <div>
@@ -51,5 +51,8 @@
                   </div>
                 </div>
               </section>
+              <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+              <script src="login.js"></script>
+              <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </body>
 </html>

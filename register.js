@@ -1,5 +1,7 @@
 //import {setToken} from "../../config/Token";
 //import getAxiosInstance from "../../config/Axios";
+//window.location.href = "login/mainpage.html";
+
 
 
 $(function() {
@@ -19,19 +21,21 @@ async function makeAccount(e) {
     console.log(name);
     console.log(username);
     console.log(pass);
-
-    const result = await axios({
-        method: 'POST',
-        url: 'http://localhost:3000/account/create',
-        data: {
-            "name": username,
-            "pass": pass,
-            "data": {
-                "fullName": name
+    //todo: add indication that account trying to be made has already been registered?
+        const result = await axios({
+            method: 'POST',
+            url: 'http://localhost:3000/account/create',
+            data: {
+                "name": username,
+                "pass": pass,
+                "data": {
+                    "fullName": name
+                }
             }
-
-        }
-    });
+        });
+        console.log("success")
+        window.location.href = "/index.html";
+    
     // try{
     //     await axios.post(`/create`,{email,pass,data});
     //     return true;
