@@ -6,7 +6,7 @@ $(function() {
     loadShit();
 });
 
-function loadShit() {
+function handleEvents() {
     $('#reg').on("click", "#makeAcc", makeAccount);
     //$('#login').on("click", ".cancel", handleCancel);
 }
