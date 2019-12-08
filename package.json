@@ -1,0 +1,24 @@
+{
+  "name": "finalproject",
+  "version": "1.0.0",
+  "description": "Comp 426 final project- An app that allows you to check what produce people around you are selling (farmers markets) and allows you to post produce that you are selling.",
+  "main": "login.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oliverfh/FarmerMap.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oliverfh/FarmerMap/issues"
+  },
+  "homepage": "https://github.com/oliverfh/FarmerMap#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "bulma": "^0.8.0",
+    "jquery": "^3.4.1"
+  }
+}
