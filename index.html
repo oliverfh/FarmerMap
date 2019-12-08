@@ -12,35 +12,43 @@
     </head>
 
     <body>
-        <div id="login">
-            <div class="login-card">
-                <div class="card-title">
-                    <h1>FarmerMap</h1>
-                </div>
-
-                <div class="content">
-                    <form id="login-form">
-                        <input id="email" type="email" name="email" title="email" placeholder="Email" required autofocus>
-                        <input id="password" type="password" name="password" title="password" placeholder="Password" required>
-
-                        <div class="field">
-                            <div class="control">
-                                <button type="submit" class="btn btn-primary"><a href="MapPage.html">Login</a></button>
+        <section class="hero is-primary is-fullheight">
+                <div class="hero-body">
+                  <div class="container">
+                    <div class="columns is-centered">
+                      <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+                        <form action="" class="box">
+                          <div class="field">
+                            <label for="" class="label">Email</label>
+                            <div class="control has-icons-left">
+                              <input type="email" placeholder="e.g. bobsmith@gmail.com" class="input" required>
+                              <span class="icon is-small is-left">
+                                <i class="fa fa-envelope"></i>
+                              </span>
                             </div>
-                        </div>
-
-                        <div>
+                          </div>
+                          <div class="field">
+                            <label for="" class="label">Password</label>
+                            <div class="control has-icons-left">
+                              <input type="password" placeholder="*******" class="input" required>
+                              <span class="icon is-small is-left">
+                                <i class="fa fa-lock"></i>
+                              </span>
+                            </div>
+                          </div>
+                          <div class="field">
+                            <button class="button is-success">
+                              Login
+                            </button>
+                          </div>
+                          <div>
                             <p>No account yet? Sign up <a href="register.html">Here</a></p>
                         </div>
-
-                        <div class="field">
-                            <div class="control">
-                                <p id="message"></p>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-            </div>
-        </div>
+              </section>
     </body>
 </html>

@@ -12,37 +12,52 @@
     </head>
 
     <body>
-        <div id="login">
-            <div class="login-card">
-                <div class="card-title">
-                    <h1>FarmerMap</h1>
-                </div>
-
-                <div class="content">
-                    <form id="login-form">
-                        <input id="email" type="email" name="email" title="email" placeholder="Email" required autofocus>
-                        <input id="name" type="name" name="name" title="name" placeholder="Name" required autofocus>
-                        <input id="username" type="username" name="username" placeholder="Username" required autofocus>
-                        <input id="password" type="password" name="password" title="password" placeholder="Password" required>
-
-                        <div class="field">
-                            <div class="control">
-                                <button type="submit" class="btn btn-primary" href="MapPage.html">Register</button>
+            <section class="hero is-primary is-fullheight">
+                    <div class="hero-body">
+                      <div class="container">
+                        <div class="columns is-centered">
+                          <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+                            <form action="" class="box">
+                              <div class="field">
+                                    <div class="field">
+                                            <label for="" class="label">Name</label>
+                                            <div class="control has-icons-left">
+                                              <input type="name" placeholder="" class="input" required>
+                                              <span class="icon is-small is-left">
+                                                <i class="fa fa-lock"></i>
+                                              </span>
+                                            </div>
+                                          </div>
+                                <label for="" class="label">Email</label>
+                                <div class="control has-icons-left">
+                                  <input type="email" placeholder="e.g. bobsmith@gmail.com" class="input" required>
+                                  <span class="icon is-small is-left">
+                                    <i class="fa fa-envelope"></i>
+                                  </span>
+                                </div>
+                              </div>
+                              <div class="field">
+                                <label for="" class="label">Password</label>
+                                <div class="control has-icons-left">
+                                  <input type="password" placeholder="*******" class="input" required>
+                                  <span class="icon is-small is-left">
+                                    <i class="fa fa-lock"></i>
+                                  </span>
+                                </div>
+                              </div>
+                              <div class="field">
+                                <button class="button is-success">
+                                  Login
+                                </button>
+                              </div>
+                              <div>
+                                <p>Already have an account? Log in <a href="index.html">Here</a></p>
                             </div>
+                            </form>
+                          </div>
                         </div>
-
-                        <div>
-                            <p>Already have an account? Login <a href="index.html">Here</a></p>
-                        </div>
-
-                        <div class="field">
-                            <div class="control">
-                                <p id="message"></p>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+                      </div>
+                    </div>
+                  </section>
     </body>
 </html>
