@@ -14,17 +14,17 @@ function handleEvents() {
 async function makeAccount(e) {
     e.preventDefault();
     const name = $('#name').val();
-    const email = $('#email').val();
+    const username = $('#username').val();
     const pass = $('#pass').val();
     console.log(name);
-    console.log(email);
+    console.log(username);
     console.log(pass);
 
     const result = await axios({
         method: 'POST',
         url: 'http://localhost:3000/account/create',
         data: {
-            "name": email,
+            "name": username,
             "pass": pass,
             "data": {
                 "fullName": name
