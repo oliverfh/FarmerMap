@@ -2,7 +2,7 @@ function posts() {
   for(let i = 0; i < 3; i++) {
     $("#posts").append(renderPost());
 }
-$('#posts').on('click','#makelisting',makeListing);
+$('#main').on('click','#makelisting',makeListing);
 
 }
 
