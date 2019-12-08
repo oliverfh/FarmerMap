@@ -8,7 +8,7 @@ a {
   color: #999;
 }
 
-a:hover { color: #777; }
+a:hover { color: #05386B; }
 
 /* NAVIGATION */
 .navigation {
@@ -17,7 +17,7 @@ a:hover { color: #777; }
   width: 250px; 
   height: 40px; 
   margin: 20px auto;
-  background: #A9A9A9;
+  background: #05386B;
 }
 
 .navigation, .navigation a.main {
@@ -45,7 +45,7 @@ a:hover { color: #777; }
 }
 
 .navigation:hover a.main {
-  color: rgba(255,255,255,0.6);
+  color: #EDF5E1;
   background: rgba(0,0,0,0.04);
 }
 
@@ -129,16 +129,16 @@ a:hover { color: #777; }
 
 header, .full-width {
   width: 100%;
-  background: #14ebaa;
+  background: #00D1B2;
 }
 .wrap {
   width: 80%;
   max-width: 24em;
   margin: 0 auto;
   padding: 0.25em 0.625em;
-  color: #14ebaa;
+  color: #00D1B2;
 }
 
-.searchbartitle {
-  color: #808080;
+#farmermaptitle {
+  color: #05386B;
 }
