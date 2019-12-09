@@ -7,6 +7,8 @@ $('#main').on('click','#makelisting',makeListing);
 }
 
 function renderPost() {
+  //todo: change to format we want.
+  //first need to retrieve data
     let head = ``
     head = `
     <div class="card" align="center">
@@ -32,20 +34,28 @@ function renderPost() {
 }
 
 function makeListing(e) {
-  console.log("fired");
   let head = `
-  <div class="card" align="center">
+  <div id="#postCenter",class="card" align="center">
     <div class="card-content">
   
-      <div class="content">
-        Bruh ipsum dolor sit amet, consectetur adipiscing elit.
-        Phasellus nec iaculis mauris.
+      <div id="toSell",class="content">
+        <span>Write your listing</span>
+        <h3>What are you selling?</h3>
+        <input id="title",type = text></input>
+        <h3>Give a description of your produce</h3>
+        <textarea id="description"></textarea>
+        <h3>Street Address</h3>
+        <input id="streetad",type=text></input>
+        <h3>State(Abbreviation)</h3>
+        <input id="state",type="text"></input>
+        <h3>ZIP Code</h3>
+        <input id="zip",type="text"></input>
         <br>
       </div>
     </div>
   </div>
   `
-  $("#posts").prepend(head);
+  $("#postCenter").replaceWith(head);
 }
 
 $(function() {
