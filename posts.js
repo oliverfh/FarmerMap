@@ -47,19 +47,35 @@ async function handlePost(e) {
   let streetad = $('#streetad').val();
   let state = $('#state').val();
   let zip = $('#zip').val();
+  let city = $('#city').val();
   console.log(title, description,streetad,state,zip);
 
   const pubRoot = new axios.create({
     baseURL: "http://localhost:3000/public"
   });
-  async function createList({title,description,streetad,state,zip}) {
+  async function createList({title,description,streetad,state,zip,city}) {
     return await pubRoot.post(`/listings/`, {
-      data: {title, description, streetad,state,zip},
+      data: {title, description, streetad,state,zip,city},
       type: "merge"
     })
   }
+  let token =(localStorage.getItem('token'));
+  console.log(`Bearer` + token);
 
-  await createList({title,description,streetad,state,zip})
+  const accRoot = new axios.create({
+    baseURL: "http://localhost:3000/user"
+  });
+  async function createUsr({title,description,streetad,state,zip,city},token) {
+    return await accRoot.post(`/listings/`, {
+      headers: {
+        "Authorization": "Bearer " + token
+        },
+      data: {title, description, streetad,state,zip,city},
+      type: "merge"
+    })
+  }
+  await createList({title,description,streetad,state,zip,city})
+  await createUsr({title,description,streetad,state,zip,city},token);
 //   const result = await axios({
 //     method: 'POST',
 //     url: 'http://localhost:3000/public/',
@@ -92,6 +108,8 @@ function makeListing(e) {
         <input id="state",type="text" class="listinginput"></input>
         <h3>ZIP Code</h3>
         <input id="zip",type="text" class="listinginput"></input>
+        <h3> City </h3>
+        <input id="city",type="text" class="listinginput"></input>
         <br>
         <button id="listingsubmit" type="submit">Post</button>
         <button id="listingcancel">Cancel</button>
