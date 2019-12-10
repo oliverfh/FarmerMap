@@ -7,7 +7,7 @@ $(function() {
 });
 
 function handleEvents() {
-    $('#log').on("click", "#login", login);
+    $('#log').on("click", "#loginbutton", login);
     //$('#login').on("click", ".cancel", handleCancel);
 }
 
