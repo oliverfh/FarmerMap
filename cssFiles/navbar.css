@@ -159,3 +159,35 @@ header, .full-width {
 #makelisting:hover {
   box-shadow: 0 12px 16px 0 #14ebaa, 0 17px 50px 0 #14ebaa;
 }
+
+#listingsubmit {
+  background-color: #05386B; /* Green */
+  border: none;
+  color: #00D1B2;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#listingsubmit:hover {
+  box-shadow: 0 12px 16px 0 #14ebaa, 0 17px 50px 0 #14ebaa;
+}
+
+#logoutbutton {
+  position: absolute;
+  right: 0;
+  background-color: #05386B; /* Green */
+  border: none;
+  color: #00D1B2;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#logoutbutton:hover {
+  box-shadow: 0 12px 16px 0 #14ebaa, 0 17px 50px 0 #14ebaa;
+}
