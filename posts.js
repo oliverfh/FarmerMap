@@ -48,6 +48,7 @@ function makeListing(e) {
         <input id="zip",type="text"></input>
         <br>
         <button id="listingsubmit" type="submit">Post</button>
+        <button id="listingcancel">Cancel</button>
       </div>
     </div>
   </div>
