@@ -1,8 +1,11 @@
+
 function posts() {
   for(let i = 0; i < 3; i++) {
     $("#posts").append(renderPost());
 }
 $('#main').on('click','#makelisting',makeListing);
+$('#main').on('click','#listingcancel',cancelListing);
+$('#main').on('click','#listingsubmit',handlePost);
 
 }
 
@@ -31,21 +34,51 @@ function renderPost() {
     return head;
 }
 
+
+
+async function handlePost(e) {
+  let title = $('#title').val();
+  let description = $('#description').val();
+  let streetad = $('#streetad').val();
+  let state = $('#state').val();
+  let zip = $('#zip').val();
+  console.log(title, description,streetad,state,zip);
+
+
+
+
+  const result = await axios({
+    method: 'POST',
+    url: 'http://localhost:3000/account/public',
+    "data": {
+        "title": title,
+        "description": description,
+        "streetad": streetad,
+        "state": state,
+        "zip": zip,
+    }
+});
+console.log("posted");
+}
+
+
+
+
 function makeListing(e) {
   let head = `
-  <div id="#postCenter",class="card" align="center">
+  <div id="#mListing",class="card" align="center">
     <div class="card-content">
       <div id="toSell",class="content">
         <h3>What are you selling?</h3>
-        <textarea id="title",type="text" class="listinginput"></textarea>
+        <textarea id="title",type = text></textarea>
         <h3>Give a description of your produce</h3>
-        <textarea id="description" class="listinginput"></textarea>
+        <textarea id="description"></textarea>
         <h3>Street Address</h3>
-        <input id="streetad",type="text" class="listinginput"></input>
+        <input id="streetad",type="text"></input>
         <h3>State(Abbreviation)</h3>
-        <input id="state",type="text" class="listinginput"></input>
+        <input id="state",type="text"></input>
         <h3>ZIP Code</h3>
-        <input id="zip",type="text" class="listinginput"></input>
+        <input id="zip",type="text"></input>
         <br>
         <button id="listingsubmit" type="submit">Post</button>
         <button id="listingcancel">Cancel</button>
@@ -53,9 +86,15 @@ function makeListing(e) {
     </div>
   </div>
   `
-  $("#postCenter").replaceWith(head);
+  $("#postCenter").append(head);
+}
+
+function cancelListing(e) {
+  let head = `<div id="postCenter"></div>`;
+  $("#mListing").remove();
 }
 
 $(function() {
   posts();
 });
+
