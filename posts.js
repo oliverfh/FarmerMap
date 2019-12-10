@@ -82,15 +82,15 @@ function makeListing(e) {
     <div class="card-content">
       <div id="toSell",class="content">
         <h3>What are you selling?</h3>
-        <textarea id="title",type = text></textarea>
+        <textarea id="title",type = text class="listinginput"></textarea>
         <h3>Give a description of your produce</h3>
-        <textarea id="description"></textarea>
+        <textarea id="description" class="listinginput"></textarea>
         <h3>Street Address</h3>
-        <input id="streetad",type="text"></input>
+        <input id="streetad",type="text" class="listinginput"></input>
         <h3>State(Abbreviation)</h3>
-        <input id="state",type="text"></input>
+        <input id="state",type="text" class="listinginput"></input>
         <h3>ZIP Code</h3>
-        <input id="zip",type="text"></input>
+        <input id="zip",type="text" class="listinginput"></input>
         <br>
         <button id="listingsubmit" type="submit">Post</button>
         <button id="listingcancel">Cancel</button>
