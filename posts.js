@@ -3,6 +3,11 @@ async function posts() {
   for(let i = 0; i < 3; i++) {
     $("#posts").append(renderPost());
 }
+
+
+
+
+
 $('#main').on('click','#makelisting',makeListing);
 $('#main').on('click','#listingcancel',cancelListing);
 $('#main').on('click','#listingsubmit',handlePost);
@@ -47,28 +52,13 @@ async function handlePost(e) {
   const pubRoot = new axios.create({
     baseURL: "http://localhost:3000/public"
   });
-  async function createAuthor({title,description,streetad,state,zip}) {
+  async function createList({title,description,streetad,state,zip}) {
     return await pubRoot.post(`/listings/`, {
       data: {title, description, streetad,state,zip}
     })
   }
-  async function getAllAuthors() {
-    return await pubRoot.get('/authors');
-  }
-  // (async () => {
-  //   await createAuthor({
-  //     first: "chris",
-  //     numBooks: 4
-  //   });
-  
-  //   let {data} = await getAllAuthors();
-  //   console.log(data)
-  // })();
-  await createAuthor({title,description,streetad,state,zip})
 
-
-
-
+  await createList({title,description,streetad,state,zip})
 //   const result = await axios({
 //     method: 'POST',
 //     url: 'http://localhost:3000/public/',
