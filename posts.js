@@ -1,5 +1,5 @@
 
-function posts() {
+async function posts() {
   for(let i = 0; i < 3; i++) {
     $("#posts").append(renderPost());
 }
@@ -44,20 +44,41 @@ async function handlePost(e) {
   let zip = $('#zip').val();
   console.log(title, description,streetad,state,zip);
 
+  const pubRoot = new axios.create({
+    baseURL: "http://localhost:3000/public"
+  });
+  async function createAuthor({first = 'John', last = 'Doe', numBooks = 0}) {
+    return await pubRoot.post(`/authors/`, {
+      data: {first, last, numBooks}
+    })
+  }
+  async function getAllAuthors() {
+    return await pubRoot.get('/authors');
+  }
+  (async () => {
+    await createAuthor({
+      first: "chris",
+      numBooks: 4
+    });
+  
+    let {data} = await getAllAuthors();
+    console.log(data)
+  })();
 
 
 
-  const result = await axios({
-    method: 'POST',
-    url: 'http://localhost:3000/account/public',
-    "data": {
-        "title": title,
-        "description": description,
-        "streetad": streetad,
-        "state": state,
-        "zip": zip,
-    }
-});
+
+//   const result = await axios({
+//     method: 'POST',
+//     url: 'http://localhost:3000/public/',
+//     data: {
+//       "title": title,
+//       "description": description,
+//       "streetad": streetad,
+//       "state": state,
+//       "zip": zip
+//     }
+// });
 console.log("posted");
 }
 
