@@ -48,14 +48,19 @@ async function handlePost(e) {
   let state = $('#state').val();
   let zip = $('#zip').val();
   let city = $('#city').val();
-  console.log(title, description,streetad,state,zip);
+  let currentdate = new Date(); 
+  let datetime = currentdate.getMonth() + "/"
+                + (currentdate.getDate()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes();
 
   const pubRoot = new axios.create({
     baseURL: "http://localhost:3000/public"
   });
-  async function createList({title,description,streetad,state,zip,city}) {
+  async function createList({title,description,streetad,state,zip,city,datetime}) {
     return await pubRoot.post(`/listings/`, {
-      data: {title, description, streetad,state,zip,city},
+      data: {title, description, streetad,state,zip,city,datetime},
       type: "merge"
     })
   }
@@ -65,17 +70,17 @@ async function handlePost(e) {
   const accRoot = new axios.create({
     baseURL: "http://localhost:3000/user"
   });
-  async function createUsr({title,description,streetad,state,zip,city},token) {
+  async function createUsr({title,description,streetad,state,zip,city,datetime},token) {
     return await accRoot.post(`/listings/`, {
       headers: {
         "Authorization": "Bearer " + token
         },
-      data: {title, description, streetad,state,zip,city},
+      data: {title, description, streetad,state,zip,city,datetime},
       type: "merge"
     })
   }
-  await createList({title,description,streetad,state,zip,city})
-  await createUsr({title,description,streetad,state,zip,city},token);
+  await createList({title,description,streetad,state,zip,city,datetime})
+  await createUsr({title,description,streetad,state,zip,city,datetime},token);
 //   const result = await axios({
 //     method: 'POST',
 //     url: 'http://localhost:3000/public/',
