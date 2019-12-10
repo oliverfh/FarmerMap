@@ -54,7 +54,8 @@ async function handlePost(e) {
   });
   async function createList({title,description,streetad,state,zip}) {
     return await pubRoot.post(`/listings/`, {
-      data: {title, description, streetad,state,zip}
+      data: {title, description, streetad,state,zip},
+      type: "merge"
     })
   }
 
