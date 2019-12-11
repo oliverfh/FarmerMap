@@ -100,21 +100,23 @@ async function handlePost(e) {
       type: "merge"
     })
   }
+
+
   // let token =(localStorage.getItem('token'));
   // console.log(`Bearer` + token);
 
-  const accRoot = new axios.create({
-    baseURL: "http://localhost:3000/user"
-  });
-  async function createUsr({title,description,streetad,state,zip,city,datetime},token) {
-    return await accRoot.post(`/listings/`, {
-      headers: {
-        Authorization: "Bearer " + token
-        },
-      data: {title, description, streetad,state,zip,city,datetime},
-      type: "merge"
-    })
-  }
+  // const accRoot = new axios.create({
+  //   baseURL: "http://localhost:3000/user"
+  // });
+  // async function createUsr({title,description,streetad,state,zip,city,datetime},token) {
+  //   return await accRoot.post(`/listings/`, {
+  //     headers: {
+  //       Authorization: "Bearer " + token
+  //       },
+  //     data: {title, description, streetad,state,zip,city,datetime},
+  //     type: "merge"
+  //   })
+  // }
   await createList({title,description,streetad,state,zip,city,datetime,userName,fullName})
   //await createUsr({title,description,streetad,state,zip,city,datetime},token);
 //   const result = await axios({
@@ -128,7 +130,30 @@ async function handlePost(e) {
 //       "zip": zip
 //     }
 // });
+const r = await axios({
+  method: 'POST',
+  url: 'http://localhost:3000/user/posts',
+  headers: {
+    Authorization: "Bearer " + token
+  },
+  data: {
+    data: {
+      "title": title,
+      "description": description,
+      "streetad": streetad,
+      "state": state,
+      "zip": zip,
+      "city": city,
+      "datetime": datetime,
+      "userName": userName,
+      "fullName": fullName
+    },
+    type: "merge"
+
+  },
+});
 renderCard(title, description, streetad, state, zip, city, datetime);
+cancelListing();
 // console.log("posted");
 }
 
