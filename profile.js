@@ -25,3 +25,22 @@ function renderProfile() {
 }
 
 $("#userprofile").append(renderProfile());
+
+
+function onLoad() {
+  $('#log').on('click', '#logoutbutton',logout)
+}
+
+function logout() {
+  let token = localStorage.getItem('token')
+  //console.log(token);
+  localStorage.removeItem('token');
+ // console.log(localStorage.getItem('token'));
+  window.location.href = "index.html";
+
+
+}
+
+$(function() {
+  onLoad();
+});

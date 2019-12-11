@@ -54,17 +54,27 @@ async function handlePost(e) {
                 + currentdate.getFullYear() + " @ "  
                 + currentdate.getHours() + ":"  
                 + currentdate.getMinutes();
-
   const pubRoot = new axios.create({
     baseURL: "http://localhost:3000/public"
   });
-  async function createList({title,description,streetad,state,zip,city,datetime}) {
+  let token =(localStorage.getItem('token'));
+  // console.log("Bearer " + token)
+    const result = await axios({
+      method: 'GET',
+      url: 'http://localhost:3000/account/status',
+      headers: {
+        Authorization: "Bearer " + token
+      }
+  });
+  let userName = result.data.user.name;
+  console
+  async function createList({title,description,streetad,state,zip,city,datetime,userName}) {
     return await pubRoot.post(`/listings/`, {
-      data: {title, description, streetad,state,zip,city,datetime},
+      data: {title, description, streetad,state,zip,city,datetime,userName},
       type: "merge"
     })
   }
-  let token =(localStorage.getItem('token'));
+  // let token =(localStorage.getItem('token'));
   console.log(`Bearer` + token);
 
   const accRoot = new axios.create({
@@ -79,7 +89,7 @@ async function handlePost(e) {
       type: "merge"
     })
   }
-  await createList({title,description,streetad,state,zip,city,datetime})
+  await createList({title,description,streetad,state,zip,city,datetime,userName})
   //await createUsr({title,description,streetad,state,zip,city,datetime},token);
 //   const result = await axios({
 //     method: 'POST',
