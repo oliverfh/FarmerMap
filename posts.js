@@ -129,10 +129,24 @@ console.log(result.data.user.name)
       </div>
     </div>    
     <div class="content">
-      ${title},${description},${streetad},${state},${zip},${city},${datetime}
-       <a>@bulmaio</a>.
-      <a href="#">#css</a> <a href="#">#responsive</a>
-      <br>
+    <div>
+      <h6 class="cardsubtitles">What I'm Selling</h6>
+      <p>${title}</p>
+    </div>
+    <div>
+      <h6 class="cardsubtitles">Description:</h6>
+      <p>${description}</p>
+    </div>
+    <div>
+      <h6 class="cardsubtitles">Address</h6>
+      <p>${streetad}</p>
+    </div>
+    <div>
+      <h6 class="cardsubtitles">City: </h6>
+      ${city}, ${state} ${zip}
+      ${datetime}
+    </div>
+      <br/>
     </div>
   </div>
 </div>
