@@ -73,14 +73,14 @@ async function handlePost(e) {
   async function createUsr({title,description,streetad,state,zip,city,datetime},token) {
     return await accRoot.post(`/listings/`, {
       headers: {
-        "Authorization": "Bearer " + token
+        Authorization: "Bearer " + token
         },
       data: {title, description, streetad,state,zip,city,datetime},
       type: "merge"
     })
   }
   await createList({title,description,streetad,state,zip,city,datetime})
-  await createUsr({title,description,streetad,state,zip,city,datetime},token);
+  //await createUsr({title,description,streetad,state,zip,city,datetime},token);
 //   const result = await axios({
 //     method: 'POST',
 //     url: 'http://localhost:3000/public/',
@@ -92,9 +92,43 @@ async function handlePost(e) {
 //       "zip": zip
 //     }
 // });
+renderCard(title, description, streetad, state, zip, city, datetime);
 console.log("posted");
 }
 
+async function renderCard(title, description, streetad, state, zip, city, datetime) {
+  let token =(localStorage.getItem('token'));
+console.log("Bearer " + token)
+  const result = await axios({
+    method: 'GET',
+    url: 'http://localhost:3000/account/status',
+    headers: {
+      Authorization: "Bearer " + token
+    }
+});
+console.log(result.data)
+
+
+  let head =`
+  <div class="card" align="center">
+  <div class="card-content">
+    <div class="media">
+      <div class="media-content">
+        <p class="title is-4" align="center">John Smith</p>
+        <p class="subtitle is-6" align="center">@johnsmith</p>
+      </div>
+    </div>    
+    <div class="content">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+      <a href="#">#css</a> <a href="#">#responsive</a>
+      <br>
+    </div>
+  </div>
+</div>
+
+  `
+}
 
 
 
