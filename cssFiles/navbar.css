@@ -229,3 +229,48 @@ header, .full-width {
 .listinginput:focus {
   border: 3px solid #05386B;
 }
+
+#listinglike {
+  background-color: #05386B; /* Green */
+  border: none;
+  color: #00D1B2;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#listinglike:hover {
+  box-shadow: 0 12px 16px 0 #14ebaa, 0 17px 50px 0 #14ebaa;
+}
+
+#listingedit {
+  background-color: #05386B; /* Green */
+  border: none;
+  color: #00D1B2;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#listingedit:hover {
+  box-shadow: 0 12px 16px 0 #EDF5E1, 0 17px 50px 0 #EDF5E1;
+}
+
+#listingdelete {
+  background-color: #05386B; /* Green */
+  border: none;
+  color: #00D1B2;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#listingdelete:hover {
+  box-shadow: 0 12px 16px 0 red, 0 17px 50px 0 red;
+}

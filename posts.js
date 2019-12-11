@@ -52,6 +52,9 @@ async function posts() {
         ${data.datetime}
       </div>
         <br/>
+        <button id="listinglike">Like</button>
+        <button id="listingedit">Edit</button>
+        <button id="listingdelete">Delete</button>
       </div>
     </div>
   </div>
