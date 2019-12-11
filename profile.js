@@ -65,7 +65,7 @@ try {
       Authorization: "Bearer " + t
     }
 });
-$('#main').prepend(`<h3>Welcome, ${x.data.user.data.fullName}`)
+$('#main').prepend(`<div id="welcomediv"><h3><strong id="welcomeword">Welcome, ${x.data.user.data.fullName}</strong></div>`)
 
 } catch (error) {
   

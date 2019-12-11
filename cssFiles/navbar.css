@@ -289,3 +289,11 @@ header, .full-width {
 #listingdelete:hover {
   box-shadow: 0 12px 16px 0 red, 0 17px 50px 0 red;
 }
+
+#welcomediv {
+  background-color: #EDF5E1;
+}
+
+#welcomeword {
+  color: #05386B;
+}
