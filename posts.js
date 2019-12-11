@@ -16,8 +16,25 @@ async function posts() {
     for(let i=result.data.result.length-1; i>result.data.result.length-30;i--) {
       renderPost(result.data.result[i]);
     }
+
   }
   
+  let t =(localStorage.getItem('token'));
+  try {
+    const x = await axios({
+      method: 'GET',
+      url: 'http://localhost:3000/account/status',
+      headers: {
+        Authorization: "Bearer " + t
+      }
+  });
+
+  $('#main').prepend(`<h3>Welcome, ${x.data.user.data.fullName}`)
+
+  } catch (error){
+    
+  }
+  // console.log("Bearer " + token)
   
   $('#main').on('click','#makelisting',makeListing);
   $('#main').on('click','#listingcancel',cancelListing);

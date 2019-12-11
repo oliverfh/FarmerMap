@@ -41,7 +41,7 @@ function renderProfile(data,i) {
 
 async function onLoad() {
   let token = localStorage.getItem('token')
-
+  console.log(token);
   $('#log').on('click', '#logoutbutton',logout)
   const result = await axios({
     method: 'GET',
@@ -66,8 +66,11 @@ function logout() {
 
 
 }
+async function editProfile() {
 
-async function profileDelete(e) {
+}
+
+async function deletePost(e) {
 
 //   const result = await axios({
 //     method: 'DELETE',
