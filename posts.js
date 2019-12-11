@@ -1,45 +1,67 @@
-
 async function posts() {
-  for(let i = 0; i < 3; i++) {
-    $("#posts").append(renderPost());
-}
-
-
-
-
-
-$('#main').on('click','#makelisting',makeListing);
-$('#main').on('click','#listingcancel',cancelListing);
-$('#main').on('click','#listingsubmit',handlePost);
-
-}
-
-function renderPost() {
-  //todo: change to format we want.
-  //first need to retrieve data
-    let head = ``
-    head = `
+  //   for(let i = 0; i < 3; i++) {
+  //     $("#posts").append(renderPost());
+  // }
+  
+  const pubRoot = new axios.create({
+    baseURL: "http://localhost:3000/public"
+  });
+  
+  const result = await pubRoot.get('/listings');
+   console.log(result.data.result[42]);
+  
+  for(let i=0; i<43;i++) {
+    renderPost(result.data.result[i]);
+  }
+  
+  
+  $('#main').on('click','#makelisting',makeListing);
+  $('#main').on('click','#listingcancel',cancelListing);
+  $('#main').on('click','#listingsubmit',handlePost);
+  
+  }
+  
+  function renderPost(data) {
+    console.log(data)
+    //todo: change to format we want.
+    //first need to retrieve data
+    let head =`
     <div class="card" align="center">
-      <div class="card-content">
-        <div class="media">
-          <div class="media-content">
-            <p class="title is-4" align="center">John Smith</p>
-            <p class="subtitle is-6" align="center">@johnsmith</p>
-          </div>
-        </div>    
-        <div class="content">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-          <a href="#">#css</a> <a href="#">#responsive</a>
-          <br>
+    <div class="card-content">
+      <div class="media">
+        <div class="media-content">
+          <p class="title is-4" align="center">${data.userName}</p>
+          <p class="subtitle is-6" align="center">@${data.userName}</p>
         </div>
+      </div>    
+      <div class="content">
+      <div>
+        <h6 class="cardsubtitles">What I'm Selling</h6>
+        <p>${data.title}</p>
+      </div>
+      <div>
+        <h6 class="cardsubtitles">Description:</h6>
+        <p>${data.description}</p>
+      </div>
+      <div>
+        <h6 class="cardsubtitles">Address</h6>
+        <p>${data.streetad}</p>
+      </div>
+      <div>
+        <h6 class="cardsubtitles">City: </h6>
+        ${data.city}, ${data.state} ${data.zip}
+        ${data.datetime}
+      </div>
+        <br/>
       </div>
     </div>
+  </div>
+  
     `
-    return head;
-}
-
-
+    $('#posts').prepend(head);
+  }
+  
+  
 
 async function handlePost(e) {
   let title = $('#title').val();
