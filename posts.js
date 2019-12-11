@@ -48,7 +48,7 @@ async function posts() {
     //todo: change to format we want.
     //first need to retrieve data
     let head =`
-    <div id="rendered", data-fullName="${data.fullName}", data-contactinfo="${data.contactinfo}", data-title="${data.title}",data-description="${data.description}",data-city="${data.city}", data-state="${data.state}",data-streetad="${data.streetad}",data-datetime="${data.datetime}",data-zip="${data.zip}",class="card" align="center">
+    <div id="rendered", data-fullName="${data.fullName}", data-contactinfo="${data.contactinfo}", data-title="${data.title}",data-description="${data.description}",data-streetad="${data.streetad}",data-datetime="${data.datetime}",class="card" align="center">
     <div class="card-content">
       <div class="media">
         <div class="media-content">
@@ -70,8 +70,6 @@ async function posts() {
         <p>${data.streetad}</p>
       </div>
       <div>
-        <h6 class="cardsubtitles">City: </h6>
-        ${data.city}, ${data.state} ${data.zip}
         ${data.datetime}
       </div>
         <br/>
@@ -93,11 +91,8 @@ async function posts() {
     let contactinfo = $rendered.data("contactinfo");
     let title = $rendered.data("title");
     let description = $rendered.data("description");
-    let city = $rendered.data("city");
-    let state = $rendered.data("state");
     let streetad = $rendered.data("streetad");
     let datetime = $rendered.data("datetime")
-    let zip = $rendered.data("zip");
     let token = localStorage.getItem('token');
     const r = await axios({
       method: 'POST',
@@ -111,9 +106,6 @@ async function posts() {
           "contactinfo": contactinfo,
           "description": description,
           "streetad": streetad,
-          "state": state,
-          "zip": zip,
-          "city": city,
           "datetime": datetime,
           "fullName": fullName
         },
@@ -131,10 +123,10 @@ async function handlePost(e) {
   let title = $('#title').val();
   let contactinfo = $('#contactinfo').val();
   let description = $('#description').val();
-  let streetad = $('#streetad').val();
-  let state = $('#state').val();
-  let zip = $('#zip').val();
-  let city = $('#city').val();
+  let streetad = $('#autocomplete').val();
+  // let state = $('#state').val();
+  // let zip = $('#zip').val();
+  // let city = $('#city').val();
   let currentdate = new Date(); 
   let datetime = currentdate.getMonth() + "/"
                 + (currentdate.getDate()+1)  + "/" 
@@ -156,9 +148,9 @@ async function handlePost(e) {
   let userName = result.data.user.name;
   let fullName = result.data.user.data.fullName;
   // console
-  async function createList({title,contactinfo,description,streetad,state,zip,city,datetime,userName,fullName}) {
+  async function createList({title,contactinfo,description,streetad,datetime,userName,fullName}) {
     return await pubRoot.post(`/listings/`, {
-      data: {title, contactinfo, description, streetad,state,zip,city,datetime,userName,fullName},
+      data: {title, contactinfo, description, streetad,datetime,userName,fullName},
       type: "merge"
     })
   }
@@ -179,7 +171,7 @@ async function handlePost(e) {
   //     type: "merge"
   //   })
   // }
-  await createList({title,contactinfo,description,streetad,state,zip,city,datetime,userName,fullName})
+  await createList({title,contactinfo,description,streetad,datetime,userName,fullName})
   //await createUsr({title,description,streetad,state,zip,city,datetime},token);
 //   const result = await axios({
 //     method: 'POST',
@@ -204,9 +196,6 @@ const r = await axios({
       "contactinfo": contactinfo,
       "description": description,
       "streetad": streetad,
-      "state": state,
-      "zip": zip,
-      "city": city,
       "datetime": datetime,
       "userName": userName,
       "fullName": fullName
@@ -215,12 +204,12 @@ const r = await axios({
 
   },
 });
-renderCard(title, contactinfo, description, streetad, state, zip, city, datetime);
+renderCard(title, contactinfo, description, streetad, datetime);
 cancelListing();
 // console.log("posted");
 }
 
-async function renderCard(title, contactinfo, description, streetad, state, zip, city, datetime) {
+async function renderCard(title, contactinfo, description, streetad, datetime) {
   let token =(localStorage.getItem('token'));
 // console.log("Bearer " + token)
   const result = await axios({
@@ -234,7 +223,7 @@ async function renderCard(title, contactinfo, description, streetad, state, zip,
 
 
   let head =`
-  <div id="rendered", data-fullName="${result.data.user.data.fullName}", data-contactinfo="${contactinfo}", data-title="${title}",data-description="${description}",data-city="${city}", data-state="${state}",data-streetad="${streetad}",data-datetime="${datetime}", data-zip="${zip},class="card" align="center">
+  <div id="rendered", data-fullName="${result.data.user.data.fullName}", data-contactinfo="${contactinfo}", data-title="${title}",data-description="${description}",data-streetad="${streetad}",data-datetime="${datetime}",class="card" align="center">
   <div class="card-content">
     <div class="media">
       <div class="media-content">
@@ -256,8 +245,6 @@ async function renderCard(title, contactinfo, description, streetad, state, zip,
       <p>${streetad}</p>
     </div>
     <div>
-      <h6 class="cardsubtitles">City: </h6>
-      ${city}, ${state} ${zip}
       ${datetime}
       </div>
         <br/>
@@ -298,13 +285,15 @@ async function makeListing(e) {
         <h3>Give a description of your produce</h3>
         <textarea id="description" class="listinginput"></textarea>
         <h3>Street Address</h3>
-        <input id="streetad",type="text" class="listinginput"></input>
-        <h3>State(Abbreviation)</h3>
-        <input id="state",type="text" class="listinginput"></input>
-        <h3>ZIP Code</h3>
-        <input id="zip",type="text" class="listinginput"></input>
-        <h3> City </h3>
-        <input id="city",type="text" class="listinginput"></input>
+        <input type="text" id="autocomplete" class="listinginput" />
+
+        <script>
+          var input = document.getElementById('autocomplete');
+          var autocomplete = new google.maps.places.Autocomplete(input);
+          google.maps.event.addListener(autocomplete, 'place_changed', function(){
+             var place = autocomplete.getPlace();
+          })
+        </script>
         <br>
         <button id="listingsubmit" type="submit">Post</button>
         <button id="listingcancel">Cancel</button>

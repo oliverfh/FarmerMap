@@ -22,8 +22,6 @@ function renderProfile(data,i) {
       <p>${data.streetad}</p>
     </div>
     <div>
-      <h6 class="cardsubtitles">City: </h6>
-      ${data.city}, ${data.state} ${data.zip}
       ${data.datetime}
     </div>
       <br/>
