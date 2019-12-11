@@ -98,7 +98,7 @@ console.log("posted");
 
 async function renderCard(title, description, streetad, state, zip, city, datetime) {
   let token =(localStorage.getItem('token'));
-console.log("Bearer " + token)
+// console.log("Bearer " + token)
   const result = await axios({
     method: 'GET',
     url: 'http://localhost:3000/account/status',
@@ -106,7 +106,7 @@ console.log("Bearer " + token)
       Authorization: "Bearer " + token
     }
 });
-console.log(result.data)
+console.log(result.data.user.name)
 
 
   let head =`
@@ -114,13 +114,13 @@ console.log(result.data)
   <div class="card-content">
     <div class="media">
       <div class="media-content">
-        <p class="title is-4" align="center">John Smith</p>
-        <p class="subtitle is-6" align="center">@johnsmith</p>
+        <p class="title is-4" align="center">${result.data.user.data.fullName}</p>
+        <p class="subtitle is-6" align="center">@${result.data.user.name}</p>
       </div>
     </div>    
     <div class="content">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+      ${title},${description},${streetad},${state},${zip},${city},${datetime}
+       <a>@bulmaio</a>.
       <a href="#">#css</a> <a href="#">#responsive</a>
       <br>
     </div>
@@ -128,6 +128,7 @@ console.log(result.data)
 </div>
 
   `
+  $('#posts').prepend(head);
 }
 
 
