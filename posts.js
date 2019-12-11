@@ -8,7 +8,6 @@ async function posts() {
   });
   
   const result = await pubRoot.get('/listings');
-   console.log(result.data.result[42]);
   
   for(let i=result.data.result.length-1; i>result.data.result.length-30;i--) {
     renderPost(result.data.result[i]);
@@ -22,7 +21,7 @@ async function posts() {
   }
   
   function renderPost(data) {
-    console.log(data)
+    // console.log(data)
     //todo: change to format we want.
     //first need to retrieve data
     let head =`
@@ -30,7 +29,7 @@ async function posts() {
     <div class="card-content">
       <div class="media">
         <div class="media-content">
-          <p class="title is-4" align="center">${data.userName}</p>
+          <p class="title is-4" align="center">${data.fullName}</p>
           <p class="subtitle is-6" align="center">@${data.userName}</p>
         </div>
       </div>    
@@ -89,15 +88,16 @@ async function handlePost(e) {
       }
   });
   let userName = result.data.user.name;
-  console
-  async function createList({title,description,streetad,state,zip,city,datetime,userName}) {
+  let fullName = result.data.user.data.fullName;
+  // console
+  async function createList({title,description,streetad,state,zip,city,datetime,userName,fullName}) {
     return await pubRoot.post(`/listings/`, {
-      data: {title, description, streetad,state,zip,city,datetime,userName},
+      data: {title, description, streetad,state,zip,city,datetime,userName,fullName},
       type: "merge"
     })
   }
   // let token =(localStorage.getItem('token'));
-  console.log(`Bearer` + token);
+  // console.log(`Bearer` + token);
 
   const accRoot = new axios.create({
     baseURL: "http://localhost:3000/user"
@@ -111,7 +111,7 @@ async function handlePost(e) {
       type: "merge"
     })
   }
-  await createList({title,description,streetad,state,zip,city,datetime,userName})
+  await createList({title,description,streetad,state,zip,city,datetime,userName,fullName})
   //await createUsr({title,description,streetad,state,zip,city,datetime},token);
 //   const result = await axios({
 //     method: 'POST',
@@ -125,7 +125,7 @@ async function handlePost(e) {
 //     }
 // });
 renderCard(title, description, streetad, state, zip, city, datetime);
-console.log("posted");
+// console.log("posted");
 }
 
 async function renderCard(title, description, streetad, state, zip, city, datetime) {
@@ -138,7 +138,7 @@ async function renderCard(title, description, streetad, state, zip, city, dateti
       Authorization: "Bearer " + token
     }
 });
-console.log(result.data.user.name)
+// console.log(result.data.user.name)
 
 
   let head =`
