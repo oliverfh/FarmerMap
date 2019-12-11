@@ -228,12 +228,17 @@ async function renderCard(title, description, streetad, state, zip, city, dateti
 
 
 
-function makeListing(e) {
+async function makeListing(e) {
+  let t =(localStorage.getItem('token'));
 
-
-
-
-
+  try {
+    const x = await axios({
+      method: 'GET',
+      url: 'http://localhost:3000/account/status',
+      headers: {
+        Authorization: "Bearer " + t
+      }
+  });
   let head = `
   <div id="postCenter">
   <div id="mListing",class="card" align="center">
@@ -260,6 +265,13 @@ function makeListing(e) {
   </div>
   `
   $("#postCenter").replaceWith(head);
+
+  } catch (error){
+    $("#postCenter").replaceWith(`<div align="center", id="postCenter"><h3>Oops, you aren't logged in! Only logged in users can perform this action.g</h3><br><h3><a href="index.html">Click here to log in</a>
+    </div>`);
+
+  }
+
 }
 
 function cancelListing(e) {
