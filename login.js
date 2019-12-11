@@ -9,6 +9,7 @@ $(function() {
 function handleEvents() {
     $('#log').on("click", "#loginbutton", login);
     //$('#login').on("click", ".cancel", handleCancel);
+    localStorage.setItem("address","default")
 }
 
 async function login(e) {

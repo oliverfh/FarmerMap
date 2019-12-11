@@ -55,27 +55,38 @@
 
       map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 35.9132, lng: -79.0558 },
-        zoom: 8
+        zoom: 14
       });
-      codeAddress("702 north columbia street")
+      if(localStorage.getItem("address") =="default"){
+  codeAddress("702 north columbia street")
+    } else{
+   codeAddress(localStorage.getItem("address"))
+   
+    localStorage.setItem("address","default")
+    
+
+  }
     }
 
     function codeAddress(address) {
+      
 
       geocoder.geocode({ 'address': address }, function (results, status) {
-        console.log(results);
+        
         var latLng = { lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng() };
-        console.log(latLng);
+        
         if (status == 'OK') {
           var marker = new google.maps.Marker({
             position: latLng,
             map: map
           });
-          console.log(map);
+          
         } else {
           alert('Geocode was not successful for the following reason: ' + status);
         }
+       
       });
+   
     }
   </script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwqqhYM4lMvacWP630HTMesU3ktpTsBxA&callback=initMap"

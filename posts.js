@@ -40,6 +40,7 @@ async function posts() {
   $('#main').on('click','#listingcancel',cancelListing);
   $('#main').on('click','#listingsubmit',handlePost);
   $('#posts').on('click','#listingsave',savePost);
+  $('#main').on('click','#mapbutton',handleMap);
   
   }
   
@@ -75,7 +76,7 @@ async function posts() {
         <br/>
         <button id="listinglike">Like</button>
         <button id="listingsave">Save</button>
-        <button id="mapbutton">View on Map</button>
+        <button id="mapbutton" data-address="${data.streetad}">View on Map</button>
       </div>
     </div>
   </div>
@@ -83,7 +84,14 @@ async function posts() {
     `
     $('#posts').append(head);
   }
-
+  function handleMap(e){
+    e.preventDefault()
+    let address = e.currentTarget.dataset.address
+    
+    localStorage.setItem('address',address);
+    window.location.href = "/mapPage.html";
+  
+  }
   async function savePost(e) {
     console.log("a");
    let $rendered = $(event.target).closest('#rendered');
@@ -250,7 +258,7 @@ async function renderCard(title, contactinfo, description, streetad, datetime) {
         <br/>
         <button id="listinglike">Like</button>
         <button id="listingsave">Save</button>
-        <button id="mapbutton">View on Map</button>
+        <button id="mapbutton" >View on Map</button>
       </div>
     </div>
   </div>
