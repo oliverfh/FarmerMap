@@ -53,6 +53,7 @@ async function posts() {
       </div>
         <br/>
         <button id="listinglike">Like</button>
+        <button id="listingsave">Save</button>
         <button id="listingedit">Edit</button>
         <button id="listingdelete">Delete</button>
       </div>

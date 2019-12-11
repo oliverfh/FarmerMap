@@ -245,6 +245,21 @@ header, .full-width {
   box-shadow: 0 12px 16px 0 #14ebaa, 0 17px 50px 0 #14ebaa;
 }
 
+#listingsave {
+  background-color: #05386B; /* Green */
+  border: none;
+  color: #00D1B2;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#listingsave:hover {
+  box-shadow: 0 12px 16px 0 #14ebaa, 0 17px 50px 0 #14ebaa;
+}
+
 #listingedit {
   background-color: #05386B; /* Green */
   border: none;
