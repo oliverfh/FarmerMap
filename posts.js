@@ -9,7 +9,7 @@ async function posts() {
   
   const result = await pubRoot.get('/listings');
   
-  for(let i=result.data.result.length-1; i>result.data.result.length-30;i--) {
+  for(let i=result.data.result.length-1; i>result.data.result.length-3;i--) {
     renderPost(result.data.result[i]);
   }
   
@@ -211,7 +211,7 @@ async function renderCard(title, description, streetad, state, zip, city, dateti
 function makeListing(e) {
   let head = `
   <div id="postCenter">
-  <div id="#mListing",class="card" align="center">
+  <div id="mListing",class="card" align="center">
     <div class="card-content">
       <div id="toSell",class="content">
         <h3>What are you selling?</h3>
@@ -239,10 +239,8 @@ function makeListing(e) {
 
 function cancelListing(e) {
   
-  $("#postCenter").remove();
-  $('#main').on('click','#makelisting',makeListing);
-$('#main').on('click','#listingcancel',cancelListing);
-$('#main').on('click','#listingsubmit',handlePost);
+  $("#mListing").remove();
+
 }
 
 $(function() {
