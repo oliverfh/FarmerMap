@@ -8,9 +8,14 @@ async function posts() {
   });
   
   const result = await pubRoot.get('/listings');
-  
-  for(let i=result.data.result.length-1; i>result.data.result.length-3;i--) {
-    renderPost(result.data.result[i]);
+  if(result.data.length >=30) {
+    for(let i=result.data.result.length-1; i>=0;i--) {
+      renderPost(result.data.result[i]);
+    }
+  } else {
+    for(let i=result.data.result.length-1; i>result.data.result.length-3;i--) {
+      renderPost(result.data.result[i]);
+    }
   }
   
   

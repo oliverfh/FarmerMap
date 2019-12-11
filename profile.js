@@ -1,6 +1,6 @@
-function renderProfile(data) {
+function renderProfile(data,i) {
   let head =`
-  <div class="card" align="center">
+  <div id="theThing",data-id="${i}",class="card" align="center">
   <div class="card-content">
     <div class="media">
       <div class="media-content">
@@ -27,10 +27,8 @@ function renderProfile(data) {
       ${data.datetime}
     </div>
       <br/>
-      <button id="listinglike">Like</button>
-      <button id="listingsave">Save</button>
-      <button id="listingedit">Edit</button>
-      <button id="listingdelete">Delete</button>
+      <button id="profileEdit">Edit</button>
+      <button id="profileDelete">Delete</button>
     </div>
   </div>
 </div>
@@ -54,9 +52,10 @@ async function onLoad() {
 });
 //console.log(result.data);
 for(let i=0; i<result.data.result.length;i++) {
-  renderProfile(result.data.result[i]);
-
+  renderProfile(result.data.result[i],i);
 }
+$('#userprofile').on('click','#profileEdit', editProfile);
+$('#userprofile').on('click','#profileDelete', deletePost);
 }
 
 function logout() {
@@ -66,6 +65,17 @@ function logout() {
   window.location.href = "index.html";
 
 
+}
+
+async function profileDelete(e) {
+
+//   const result = await axios({
+//     method: 'DELETE',
+//     url: 'http://localhost:3000/user/posts/',
+//     headers: {
+//       Authorization: "Bearer " + token
+//     }
+// });
 }
 
 $(function() {
