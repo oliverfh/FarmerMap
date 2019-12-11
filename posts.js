@@ -13,7 +13,7 @@ async function posts() {
       renderPost(result.data.result[i]);
     }
   } else {
-    for(let i=result.data.result.length-1; i>result.data.result.length-3;i--) {
+    for(let i=result.data.result.length-1; i>result.data.result.length-30;i--) {
       renderPost(result.data.result[i]);
     }
   }
