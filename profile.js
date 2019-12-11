@@ -54,6 +54,23 @@ async function onLoad() {
 for(let i=0; i<result.data.result.length;i++) {
   renderProfile(result.data.result[i],i);
 }
+
+
+let t =(localStorage.getItem('token'));
+try {
+  const x = await axios({
+    method: 'GET',
+    url: 'http://localhost:3000/account/status',
+    headers: {
+      Authorization: "Bearer " + t
+    }
+});
+$('#main').prepend(`<h3>Welcome, ${x.data.user.data.fullName}`)
+
+} catch (error) {
+  
+}
+
 $('#userprofile').on('click','#profileEdit', editProfile);
 $('#userprofile').on('click','#profileDelete', deletePost);
 }
