@@ -39,6 +39,7 @@ async function posts() {
   $('#main').on('click','#makelisting',makeListing);
   $('#main').on('click','#listingcancel',cancelListing);
   $('#main').on('click','#listingsubmit',handlePost);
+  $('#posts').on('click','#listingsave',savePost);
   
   }
   
@@ -47,7 +48,7 @@ async function posts() {
     //todo: change to format we want.
     //first need to retrieve data
     let head =`
-    <div class="card" align="center">
+    <div id="rendered", data-fullName="${data.fullName}", data-contactinfo="${data.contactinfo}", data-title="${data.title}",data-description="${data.description}",data-city="${data.city}", data-state="${data.state}",data-streetad="${data.streetad}",data-datetime="${data.datetime}",data-zip="${data.zip}",class="card" align="center">
     <div class="card-content">
       <div class="media">
         <div class="media-content">
@@ -83,6 +84,45 @@ async function posts() {
   
     `
     $('#posts').append(head);
+  }
+
+  async function savePost(e) {
+    console.log("a");
+   let $rendered = $(event.target).closest('#rendered');
+    let fullName =$rendered.data("fullName");
+    let contactinfo = $rendered.data("contactinfo");
+    let title = $rendered.data("title");
+    let description = $rendered.data("description");
+    let city = $rendered.data("city");
+    let state = $rendered.data("state");
+    let streetad = $rendered.data("streetad");
+    let datetime = $rendered.data("datetime")
+    let zip = $rendered.data("zip");
+    let token = localStorage.getItem('token');
+    const r = await axios({
+      method: 'POST',
+      url: 'http://localhost:3000/user/saved',
+      headers: {
+        Authorization: "Bearer " + token
+      },
+      data: {
+        data: {
+          "title": title,
+          "contactinfo": contactinfo,
+          "description": description,
+          "streetad": streetad,
+          "state": state,
+          "zip": zip,
+          "city": city,
+          "datetime": datetime,
+          "fullName": fullName
+        },
+        type: "merge"
+    
+      },
+    });
+  console.log(r)
+
   }
   
   
@@ -194,7 +234,7 @@ async function renderCard(title, contactinfo, description, streetad, state, zip,
 
 
   let head =`
-  <div class="card" align="center">
+  <div id="rendered", data-fullName="${result.data.user.data.fullName}", data-contactinfo="${contactinfo}", data-title="${title}",data-description="${description}",data-city="${city}", data-state="${state}",data-streetad="${streetad}",data-datetime="${datetime}", data-zip="${zip},class="card" align="center">
   <div class="card-content">
     <div class="media">
       <div class="media-content">
@@ -219,8 +259,12 @@ async function renderCard(title, contactinfo, description, streetad, state, zip,
       <h6 class="cardsubtitles">City: </h6>
       ${city}, ${state} ${zip}
       ${datetime}
-    </div>
-      <br/>
+      </div>
+        <br/>
+        <button id="listinglike">Like</button>
+        <button id="listingsave">Save</button>
+        <button id="mapbutton">View on Map</button>
+      </div>
     </div>
   </div>
 </div>
