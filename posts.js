@@ -76,6 +76,7 @@ async function posts() {
         <br/>
         <button id="listinglike">Like</button>
         <button id="listingsave">Save</button>
+        <button id="mapbutton">View on Map</button>
       </div>
     </div>
   </div>
