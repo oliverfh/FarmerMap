@@ -40,7 +40,19 @@ function renderProfile(data,i) {
 
 
 async function onLoad() {
-  let token = localStorage.getItem('token')
+
+let t =(localStorage.getItem('token'));
+try {
+  const x = await axios({
+    method: 'GET',
+    url: 'http://localhost:3000/account/status',
+    headers: {
+      Authorization: "Bearer " + t
+    }
+});
+$('#main').prepend(`<div id="welcomediv"><h3><strong id="welcomeword">Welcome, ${x.data.user.data.fullName}</strong></div>`)
+
+let token = localStorage.getItem('token')
   console.log(token);
   $('#log').on('click', '#logoutbutton',logout)
   const result = await axios({
@@ -54,21 +66,8 @@ async function onLoad() {
 for(let i=0; i<result.data.result.length;i++) {
   renderProfile(result.data.result[i],i);
 }
-
-
-let t =(localStorage.getItem('token'));
-try {
-  const x = await axios({
-    method: 'GET',
-    url: 'http://localhost:3000/account/status',
-    headers: {
-      Authorization: "Bearer " + t
-    }
-});
-$('#main').prepend(`<div id="welcomediv"><h3><strong id="welcomeword">Welcome, ${x.data.user.data.fullName}</strong></div>`)
-
 } catch (error) {
-  
+  $('#main').append(`<div align="Center"><h2>Ooops you're not logged in.</h2> <br> <a href="index.html">Click here to login!</a> </div>`);
 }
 
 $('#userprofile').on('click','#profileEdit', editProfile);
@@ -76,10 +75,12 @@ $('#userprofile').on('click','#profileDelete', deletePost);
 }
 
 function logout() {
-  //console.log(token);
+ //TODO remove if not logged in
+     //console.log(token);
   localStorage.removeItem('token');
- // console.log(localStorage.getItem('token'));
-  window.location.href = "index.html";
+  // console.log(localStorage.getItem('token'));
+   window.location.href = "index.html";
+ 
 
 
 }
