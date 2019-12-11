@@ -229,6 +229,15 @@ async function renderCard(title, description, streetad, state, zip, city, dateti
 
 
 function makeListing(e) {
+
+  try {
+    const x = await axios({
+      method: 'GET',
+      url: 'http://localhost:3000/account/status',
+      headers: {
+        Authorization: "Bearer " + t
+      }
+  });
   let head = `
   <div id="postCenter">
   <div id="mListing",class="card" align="center">
@@ -255,6 +264,12 @@ function makeListing(e) {
   </div>
   `
   $("#postCenter").replaceWith(head);
+
+
+  } catch (error){
+    
+  }
+
 }
 
 function cancelListing(e) {
