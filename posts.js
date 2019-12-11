@@ -10,7 +10,7 @@ async function posts() {
   const result = await pubRoot.get('/listings');
    console.log(result.data.result[42]);
   
-  for(let i=0; i<43;i++) {
+  for(let i=result.data.result.length-1; i>result.data.result.length-30;i--) {
     renderPost(result.data.result[i]);
   }
   
@@ -58,7 +58,7 @@ async function posts() {
   </div>
   
     `
-    $('#posts').prepend(head);
+    $('#posts').append(head);
   }
   
   
