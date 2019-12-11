@@ -52,7 +52,7 @@ async function posts() {
       <div class="media">
         <div class="media-content">
           <p class="title is-4" align="center">${data.fullName}</p>
-          <p class="subtitle is-6" align="center">@${data.userName}</p>
+          <p class="subtitle is-6" align="center">${data.contactinfo}</p>
         </div>
       </div>    
       <div class="content">
@@ -89,6 +89,7 @@ async function posts() {
 
 async function handlePost(e) {
   let title = $('#title').val();
+  let contactinfo = $('#contactinfo').val();
   let description = $('#description').val();
   let streetad = $('#streetad').val();
   let state = $('#state').val();
@@ -115,9 +116,9 @@ async function handlePost(e) {
   let userName = result.data.user.name;
   let fullName = result.data.user.data.fullName;
   // console
-  async function createList({title,description,streetad,state,zip,city,datetime,userName,fullName}) {
+  async function createList({title,contactinfo,description,streetad,state,zip,city,datetime,userName,fullName}) {
     return await pubRoot.post(`/listings/`, {
-      data: {title, description, streetad,state,zip,city,datetime,userName,fullName},
+      data: {title, contactinfo, description, streetad,state,zip,city,datetime,userName,fullName},
       type: "merge"
     })
   }
@@ -138,7 +139,7 @@ async function handlePost(e) {
   //     type: "merge"
   //   })
   // }
-  await createList({title,description,streetad,state,zip,city,datetime,userName,fullName})
+  await createList({title,contactinfo,description,streetad,state,zip,city,datetime,userName,fullName})
   //await createUsr({title,description,streetad,state,zip,city,datetime},token);
 //   const result = await axios({
 //     method: 'POST',
@@ -160,6 +161,7 @@ const r = await axios({
   data: {
     data: {
       "title": title,
+      "contactinfo": contactinfo,
       "description": description,
       "streetad": streetad,
       "state": state,
@@ -173,12 +175,12 @@ const r = await axios({
 
   },
 });
-renderCard(title, description, streetad, state, zip, city, datetime);
+renderCard(title, contactinfo, description, streetad, state, zip, city, datetime);
 cancelListing();
 // console.log("posted");
 }
 
-async function renderCard(title, description, streetad, state, zip, city, datetime) {
+async function renderCard(title, contactinfo, description, streetad, state, zip, city, datetime) {
   let token =(localStorage.getItem('token'));
 // console.log("Bearer " + token)
   const result = await axios({
@@ -197,7 +199,7 @@ async function renderCard(title, description, streetad, state, zip, city, dateti
     <div class="media">
       <div class="media-content">
         <p class="title is-4" align="center">${result.data.user.data.fullName}</p>
-        <p class="subtitle is-6" align="center">@${result.data.user.name}</p>
+        <p class="subtitle is-6" align="center">${contactinfo}</p>
       </div>
     </div>    
     <div class="content">
@@ -245,6 +247,8 @@ async function makeListing(e) {
   <div id="mListing",class="card" align="center">
     <div class="card-content">
       <div id="toSell",class="content">
+        <h3>Contact Info: (Email or Phone Number)</h3>
+        <input id="contactinfo" type="text" class="listinginput"></input>
         <h3>What are you selling?</h3>
         <textarea id="title",type = text class="listinginput"></textarea>
         <h3>Give a description of your produce</h3>
