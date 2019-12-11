@@ -159,6 +159,7 @@ console.log(result.data.user.name)
 
 function makeListing(e) {
   let head = `
+  <div id="postCenter">
   <div id="#mListing",class="card" align="center">
     <div class="card-content">
       <div id="toSell",class="content">
@@ -180,13 +181,17 @@ function makeListing(e) {
       </div>
     </div>
   </div>
+  </div>
   `
-  $("#postCenter").append(head);
+  $("#postCenter").replaceWith(head);
 }
 
 function cancelListing(e) {
-  let head = `<div id="postCenter"></div>`;
-  $("#mListing").remove();
+  
+  $("#postCenter").remove();
+  $('#main').on('click','#makelisting',makeListing);
+$('#main').on('click','#listingcancel',cancelListing);
+$('#main').on('click','#listingsubmit',handlePost);
 }
 
 $(function() {
