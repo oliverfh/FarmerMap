@@ -116,52 +116,61 @@ async function makeListing(e) {
 
 
   async function handlePost(e) {
-      let message = $('#message').val();
-      let currentdate = new Date(); 
-      let datetime = currentdate.getMonth() + "/"
-                + (currentdate.getDate()+1)  + "/" 
-                + currentdate.getFullYear() + " @ "  
-                + currentdate.getHours() + ":"  
-                + currentdate.getMinutes();
-    let token =(localStorage.getItem('token'));
-                // console.log("Bearer " + token)
-    const result = await axios({
-        method: 'GET',
-        url: 'http://localhost:3000/account/status',
-        headers: {
-            Authorization: "Bearer " + token
-            }
-    });
-    let userName = result.data.user.name;
-    let fullName = result.data.user.data.fullName;
-    const getQuote = await axios({
-        method: 'GET',
-        url: 'http://localhost:3000/user/quote',
-        headers: {
-            Authorization: "Bearer " + token
-            }
-    });
-   let quote = (getQuote.data.result.quote);
-    const r = await axios({
-        method: 'POST',
-        url: 'http://localhost:3000/private/posts',
-        headers: {
-          Authorization: "Bearer " + token
-        },
-        data: {
-          data: {
-            "message": message,
-            "userName": userName,
-            "fullName": fullName,
-            "datetime": datetime,
-            "quote": quote,
-          },
-          type: "merge"
-        },
+
+    try {
+
+        let message = $('#message').val();
+        let currentdate = new Date(); 
+        let datetime = currentdate.getMonth() + "/"
+                  + (currentdate.getDate()+1)  + "/" 
+                  + currentdate.getFullYear() + " @ "  
+                  + currentdate.getHours() + ":"  
+                  + currentdate.getMinutes();
+      let token =(localStorage.getItem('token'));
+                  // console.log("Bearer " + token)
+      const result = await axios({
+          method: 'GET',
+          url: 'http://localhost:3000/account/status',
+          headers: {
+              Authorization: "Bearer " + token
+              }
       });
-      console.log(r)
-renderCard(userName, fullName, message, datetime, quote);
-cancelListing();
+      let userName = result.data.user.name;
+      let fullName = result.data.user.data.fullName;
+      const getQuote = await axios({
+          method: 'GET',
+          url: 'http://localhost:3000/user/quote',
+          headers: {
+              Authorization: "Bearer " + token
+              }
+      });
+     let quote = (getQuote.data.result.quote);
+      const r = await axios({
+          method: 'POST',
+          url: 'http://localhost:3000/private/posts',
+          headers: {
+            Authorization: "Bearer " + token
+          },
+          data: {
+            data: {
+              "message": message,
+              "userName": userName,
+              "fullName": fullName,
+              "datetime": datetime,
+              "quote": quote,
+            },
+            type: "merge"
+          },
+        });
+        console.log(r)
+  renderCard(userName, fullName, message, datetime, quote);
+  cancelListing();
+
+    } catch (error) {
+        if (window.confirm('Woah, you tried to post without setting a quote! Travel over to your profile page to set something freindly.')) {
+window.location.href='profile.html';
+};
+    }
   }
 
   function renderCard(userName, fullName, message, datetime, quote) {
