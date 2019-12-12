@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="node_modules/bulma/css/bulma.css" />
     <link rel="stylesheet" href="cssFiles/navbar.css" />
     <link rel="icon" href="FarmerMapBrowserIcon.PNG">
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwqqhYM4lMvacWP630HTMesU3ktpTsBxA&libraries=places"></script>
   </head>
   <body>
     <div id = "main">
@@ -16,6 +17,7 @@
                   <a class="main" href="#url">Profile</a>
                   <li class="n2"><a href="PostPage.html">Listings</a></li>
                   <li class="n4"><a href="chatroom.html">User Chatroom</a></li>
+                  <li class ="n5"><a href="saved.html">Saved Posts</a></li>
                 </ul>
           </div>
         </header>
@@ -36,6 +38,7 @@
               </header>
               <header>
                 <div id="log" class="wrap">
+                    <button id="editprofilebutton">Edit Profile</button>
                     <button id="logoutbutton">Logout</button>
                 </div>
               </header>
