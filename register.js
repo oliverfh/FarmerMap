@@ -26,7 +26,8 @@ async function makeAccount(e) {
                 "name": username,
                 "pass": pass,
                 "data": {
-                    "fullName": name
+                    "fullName": name,
+                    "quote": ''.
                 }
             }
         });
