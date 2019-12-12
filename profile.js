@@ -87,6 +87,19 @@ async function editProfile() {
 }
 
 async function deletePost(e) {
+  // let t = localStorage.getItem('token');
+
+//   const x = await axios({
+//     method: 'GET',
+//     url: 'http://localhost:3000/user/saved',
+//     headers: {
+//       Authorization: "Bearer " + t
+//     }
+// });
+// let index = $(e.target.closest('#theThing')).data("i");
+// console.log(index);
+
+
 
 //   const result = await axios({
 //     method: 'DELETE',

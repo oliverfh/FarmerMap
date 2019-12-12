@@ -1,6 +1,6 @@
 function renderProfile(data,i) {
     let head =`
-    <div id="theThing",data-id="${i}",class="card" align="center">
+    <div id="theThing", data-id="${i}", class="card" align="center">
     <div class="card-content">
       <div class="media">
         <div class="media-content">
@@ -58,8 +58,8 @@ function renderProfile(data,i) {
         Authorization: "Bearer " + token
       }
   });
-  console.log(result.data.result)
-  
+//   console.log(result.data.result)
+
   //console.log(result.data);
   for(let i=0; i<result.data.result.length;i++) {
     renderProfile(result.data.result[i],i);
@@ -68,33 +68,36 @@ function renderProfile(data,i) {
     $('#main').append(`<div align="Center"><h2>Ooops you're not logged in.</h2> <br> <a href="index.html">Click here to login!</a> </div>`);
   }
   
-  $('#userprofile').on('click','#profileEdit', editProfile);
   $('#userprofile').on('click','#profileDelete', deletePost);
   }
   
-  function logout() {
-   //TODO remove if not logged in
-       //console.log(token);
-    localStorage.removeItem('token');
-    // console.log(localStorage.getItem('token'));
-     window.location.href = "index.html";
-   
-  
-  
-  }
-  async function editProfile() {
-  
-  }
   
   async function deletePost(e) {
+  let t = localStorage.getItem('token');
   
-  //   const result = await axios({
-  //     method: 'DELETE',
-  //     url: 'http://localhost:3000/user/posts/',
-  //     headers: {
-  //       Authorization: "Bearer " + token
-  //     }
-  // });
+  let $rendered = $(event.target).closest('#theThing');
+  let index =$rendered.data("id");
+//     const x = await axios({
+//       method: 'GET',
+//       url: 'http://localhost:3000/user/saved',
+//       headers: {
+//         Authorization: "Bearer " + t
+//       }
+//   });
+  //console.log(x.data.result[index]);
+// let newArr = x.data.result;
+const r = await axios({
+    method: 'DELETE',
+    url: 'http://localhost:3000/user/saved/' +index,
+    headers: {
+      Authorization: "Bearer " + t
+    },
+  });
+
+
+
+console.log(r);
+  
   }
   
   $(function() {
