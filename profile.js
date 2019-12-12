@@ -69,6 +69,7 @@ for(let i=0; i<result.data.result.length;i++) {
 
 $('#log').on('click','#editprofilebutton', editProfile);
 $('#userprofile').on('click','#profileDelete', deletePost);
+$('#profilecenter').on('click','#quotecancel',cancelQuote);
 }
 
 function logout() {
@@ -83,10 +84,10 @@ function logout() {
 }
 async function editProfile() {
   let head = `
-  <div id="postCenter">
-  <div id="mListing",class="card" align="center">
+  <div id="profilecenter">
+  <div id="profilequote",class="card" align="center">
     <div class="card-content">
-      <div id="toSell",class="content">
+      <div id="toquote",class="content">
         <h3>What is your favorite quote?</h3>
         <textarea id="description" class="listinginput"></textarea>
         <br>
@@ -98,6 +99,12 @@ async function editProfile() {
   </div>
   `
 $('#theThing').prepend(head);
+}
+
+function cancelQuote(e) {
+  console.log("test");
+  $("#profilecenter").remove();
+
 }
 
 async function deletePost(e) {

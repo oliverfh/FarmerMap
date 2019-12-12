@@ -376,3 +376,33 @@ header, .full-width {
 #mapbutton:hover {
   box-shadow: 0 12px 16px 0 #14ebaa, 0 17px 50px 0 #14ebaa;
 }
+
+#quotesubmit {
+  background-color: #05386B; /* Green */
+  border: none;
+  color: #00D1B2;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#quotesubmit:hover {
+  box-shadow: 0 12px 16px 0 #14ebaa, 0 17px 50px 0 #14ebaa;
+}
+
+#quotecancel {
+  background-color: #05386B; /* Green */
+  border: none;
+  color: #00D1B2;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+#quotecancel:hover {
+  box-shadow: 0 12px 16px 0 red, 0 17px 50px 0 red;
+}
