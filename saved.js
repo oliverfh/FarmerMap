@@ -25,8 +25,6 @@ function renderProfile(data,i) {
         ${data.datetime}
       </div>
         <br/>
-        <button id="profileEdit">Edit</button>
-        <button id="profileDelete">Delete</button>
       </div>
     </div>
   </div>

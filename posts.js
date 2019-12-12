@@ -74,7 +74,6 @@ async function posts() {
         ${data.datetime}
       </div>
         <br/>
-        <button id="listinglike">Like</button>
         <button id="listingsave">Save</button>
         <button id="mapbutton" data-address="${data.streetad}">View on Map</button>
       </div>
@@ -256,7 +255,6 @@ async function renderCard(title, contactinfo, description, streetad, datetime) {
       ${datetime}
       </div>
         <br/>
-        <button id="listinglike">Like</button>
         <button id="listingsave">Save</button>
         <button id="mapbutton" data-address="${streetad}" >View on Map</button>
       </div> 
