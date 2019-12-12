@@ -77,7 +77,7 @@ function renderProfile(data,i) {
 
   }
   
-  $('#deletediv').on('click','#profileDelete', deletePost);
+  $('#deletediv').on('click','#profiledeletebutton', deletePost);
   }
   
   
@@ -105,8 +105,7 @@ const r = await axios({
 
 
 
-console.log(r);
-  
+location.reload();
   }
   
   $(function() {

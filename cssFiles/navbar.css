@@ -411,7 +411,7 @@ header, .full-width {
   width: 300px;
 }
 
-#profiledelete {
+#profiledeletebutton {
   position: absolute;
   left: 0;
   background-color: #05386B; /* Green */
@@ -424,6 +424,6 @@ header, .full-width {
   font-size: 16px;
 }
 
-#profiledelete:hover {
+#profiledeletebutton:hover {
   box-shadow: 0 12px 16px 0 #14ebaa, 0 17px 50px 0 #14ebaa;
 }
