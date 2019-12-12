@@ -258,8 +258,8 @@ async function renderCard(title, contactinfo, description, streetad, datetime) {
         <br/>
         <button id="listinglike">Like</button>
         <button id="listingsave">Save</button>
-        <button id="mapbutton" >View on Map</button>
-      </div>
+        <button id="mapbutton" data-address="${streetad}" >View on Map</button>
+      </div> 
     </div>
   </div>
 </div>

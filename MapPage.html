@@ -55,6 +55,10 @@
 
       
       if(localStorage.getItem("address") =="default"){
+        map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat:35.919922,lng:-79.059633},
+        zoom: 14
+      });
       codeAddress("702 north columbia street")
     } else{
       codeAddress(localStorage.getItem("address"))
