@@ -58,14 +58,23 @@ function renderProfile(data,i) {
         Authorization: "Bearer " + token
       }
   });
+  console.log(result.data.result[0]);
+  if(result.data.result==null) {
+    $('#main').append(`<div align="Center"><h2>Ooops you haven't saved any posts!</h2> <br> <a href="PostPage.html">Click here to save some!</a> </div>`);
+
+  } else {
+    for(let i=0; i<result.data.result.length;i++) {
+        renderProfile(result.data.result[i],i);
+      }
+  }
 //   console.log(result.data.result)
 
   //console.log(result.data);
-  for(let i=0; i<result.data.result.length;i++) {
-    renderProfile(result.data.result[i],i);
-  }
+
   } catch (error) {
-    $('#main').append(`<div align="Center"><h2>Ooops you're not logged in.</h2> <br> <a href="index.html">Click here to login!</a> </div>`);
+      
+        $('#main').append(`<div align="Center"><h2>This is empty. Did you mean to save some posts?</h2> <br> <a href="PostPage.html">Click here to save something!</a> </div>`);
+
   }
   
   $('#userprofile').on('click','#profileDelete', deletePost);
@@ -88,7 +97,7 @@ function renderProfile(data,i) {
 // let newArr = x.data.result;
 const r = await axios({
     method: 'DELETE',
-    url: 'http://localhost:3000/user/saved/' +index,
+    url: 'http://localhost:3000/user/saved/',
     headers: {
       Authorization: "Bearer " + t
     },
