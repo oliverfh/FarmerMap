@@ -26,7 +26,6 @@ function renderProfile(data,i) {
       ${data.datetime}
     </div>
       <br/>
-      <button id="profileDelete">Delete</button>
     </div>
   </div>
 </div>
@@ -108,7 +107,7 @@ async function submitQuote(e) {
 
 async function editProfile() {
   let head = `
-  <div id="profilecenter">
+  <div id="editcenter">
   <div id="profilequote",class="card" align="center">
     <div class="card-content">
       <div id="toquote",class="content">
@@ -122,13 +121,13 @@ async function editProfile() {
   </div>
   </div>
   `
-$('#profilecenter').replaceWith(head);
+$('#profilecenter').prepend(head);
 $('#profilecenter').on('click','#quotecancel',cancelQuote);
 }
 
 function cancelQuote(e) {
  
-  $("#profilecenter").remove();
+  $("#editcenter").remove();
 
 }
 
