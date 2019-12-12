@@ -18,7 +18,7 @@ async function onLoad() {
         Authorization: "Bearer " + t
       }
   });
-  $('#main').prepend(`<div id="welcomediv"><h3><strong id="welcomeword">Welcome, ${x.data.user.data.fullName}</strong></div>`)
+  $('#main').prepend(`<div id="welcomediv" ><h3><strong id="welcomeword">Welcome, ${x.data.user.data.fullName}</strong></div>`)
   
   let token = localStorage.getItem('token')
     const result = await axios({
@@ -41,6 +41,7 @@ async function onLoad() {
 
 async function renderMessages(data) {
     let head =`
+    <section class="section box ">
     <div id="rendered",class="card" align="center">
     <div class="card-content">
       <div class="media">
@@ -65,6 +66,7 @@ async function renderMessages(data) {
       </div>
     </div>
   </div>
+  </section >
     `
     $('#posts').prepend(head);
 }
@@ -175,6 +177,7 @@ window.location.href='profile.html';
 
   function renderCard(userName, fullName, message, datetime, quote) {
     let head =`
+    <section class="section box  ">
     <div id="rendered",class="card" align="center">
     <div class="card-content">
       <div class="media">
@@ -199,6 +202,7 @@ window.location.href='profile.html';
       </div>
     </div>
   </div>
+  </section>
   
     `
     $('#posts').prepend(head);

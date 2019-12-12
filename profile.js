@@ -1,5 +1,6 @@
 function renderProfile(data,i) {
   let head =`
+  <section class="section box">
   <div id="profilecenter"></div>
   <div id="theThing",data-id="${i}",class="card" align="center">
   <div class="card-content">
@@ -29,6 +30,7 @@ function renderProfile(data,i) {
     </div>
   </div>
 </div>
+</section >
 
   `
   $('#userprofile').prepend(head);

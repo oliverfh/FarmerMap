@@ -49,8 +49,10 @@ async function posts() {
     //todo: change to format we want.
     //first need to retrieve data
     let head =`
+    <section class="section  ">
     <div id="rendered", data-fullName="${data.fullName}", data-contactinfo="${data.contactinfo}", data-title="${data.title}", data-description="${data.description}", data-streetad="${data.streetad}", data-datetime="${data.datetime}", class="card" align="center">
     <div class="card-content">
+
       <div class="media">
         <div class="media-content">
           <p class="title is-4" align="center">${data.fullName}</p>
@@ -79,7 +81,8 @@ async function posts() {
       </div>
     </div>
   </div>
-  
+  </section>
+
     `
     $('#posts').append(head);
   }
@@ -238,6 +241,7 @@ async function renderCard(title, contactinfo, description, streetad, datetime) {
 
 
   let head =`
+  <section class="section">
   <div id="rendered", data-fullName="${result.data.user.data.fullName}", data-contactinfo="${contactinfo}", data-title="${title}", data-description="${description}", data-streetad="${streetad}", data-datetime="${datetime}", class="card" align="center">
   <div class="card-content">
     <div class="media">
@@ -269,7 +273,7 @@ async function renderCard(title, contactinfo, description, streetad, datetime) {
     </div>
   </div>
 </div>
-
+</section>
   `
   $('#posts').prepend(head);
 }
