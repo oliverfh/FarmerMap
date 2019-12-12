@@ -49,7 +49,7 @@ async function posts() {
     //todo: change to format we want.
     //first need to retrieve data
     let head =`
-    <div id="rendered", data-fullName="${data.fullName}", data-contactinfo="${data.contactinfo}", data-title="${data.title}",data-description="${data.description}",data-streetad="${data.streetad}",data-datetime="${data.datetime}",class="card" align="center">
+    <div id="rendered", data-fullName="${data.fullName}", data-contactinfo="${data.contactinfo}", data-title="${data.title}", data-description="${data.description}", data-streetad="${data.streetad}", data-datetime="${data.datetime}", class="card" align="center">
     <div class="card-content">
       <div class="media">
         <div class="media-content">
@@ -92,16 +92,16 @@ async function posts() {
     window.location.href = "/mapPage.html";
   
   }
-  async function savePost(e) {
-    console.log("a");
+  async function savePost(event) {
    let $rendered = $(event.target).closest('#rendered');
-    let fullName =$rendered.data("fullName");
+    let fullName =$rendered.data("fullname");
     let contactinfo = $rendered.data("contactinfo");
     let title = $rendered.data("title");
     let description = $rendered.data("description");
     let streetad = $rendered.data("streetad");
     let datetime = $rendered.data("datetime")
     let token = localStorage.getItem('token');
+    console.log(fullName,contactinfo,title,description,streetad,datetime);
     const r = await axios({
       method: 'POST',
       url: 'http://localhost:3000/user/saved',
@@ -231,7 +231,7 @@ async function renderCard(title, contactinfo, description, streetad, datetime) {
 
 
   let head =`
-  <div id="rendered", data-fullName="${result.data.user.data.fullName}", data-contactinfo="${contactinfo}", data-title="${title}",data-description="${description}",data-streetad="${streetad}",data-datetime="${datetime}",class="card" align="center">
+  <div id="rendered", data-fullName="${result.data.user.data.fullName}", data-contactinfo="${contactinfo}", data-title="${title}", data-description="${description}", data-streetad="${streetad}", data-datetime="${datetime}", class="card" align="center">
   <div class="card-content">
     <div class="media">
       <div class="media-content">
