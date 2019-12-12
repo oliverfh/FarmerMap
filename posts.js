@@ -92,7 +92,8 @@ async function posts() {
   
   }
   async function savePost(event) {
-   let $rendered = $(event.target).closest('#rendered');
+    try {
+      let $rendered = $(event.target).closest('#rendered');
     let fullName =$rendered.data("fullname");
     let contactinfo = $rendered.data("contactinfo");
     let title = $rendered.data("title");
@@ -121,6 +122,13 @@ async function posts() {
       },
     });
   console.log(r)
+
+    } catch (error) {
+      if(window.confirm('You need to be logged in to use this feature. Click ok to go to the login page')) {
+        window.location.href='index.html';
+
+      }
+    }
 
   }
   

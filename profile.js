@@ -39,7 +39,10 @@ function renderProfile(data,i) {
 async function onLoad() {
 
 let t =(localStorage.getItem('token'));
-try {
+if(t == null) {
+  $('#userprofile').append(`<div align="center"><p>You're not logged in.</p><br><a href="index.html">Click here to login!</a></br></div>`)
+}
+
   const x = await axios({
     method: 'GET',
     url: 'http://localhost:3000/account/status',
@@ -63,9 +66,7 @@ let token = localStorage.getItem('token')
 for(let i=0; i<result.data.result.length;i++) {
   renderProfile(result.data.result[i],i);
 }
-} catch (error) {
-  $('#main').append(`<div align="Center"><h2>Ooops you're not logged in.</h2> <br> <a href="index.html">Click here to login!</a> </div>`);
-}
+
 
 $('#log').on('click','#editprofilebutton', editProfile);
 $('#userprofile').on('click','#profileDelete', deletePost);
