@@ -29,7 +29,8 @@
   <header>
     <div class="wrap">
       <ul class="navigation">
-        <a class="main" href="#url">Farmer Map</a>
+        <a class="main" href="#url">FarmerMap</a>
+        <li class="n1"><a href="MapPage.html">Map</a></li>
         <li class="n2"><a href="PostPage.html">Listings</a></li>
         <li class="n3"><a href="profile.html">Profile</a></li>
         <li class="n4"><a href="chatroom.html">User Chatroom</a></li>
@@ -53,14 +54,11 @@
     function initMap() {
       geocoder = new google.maps.Geocoder();
 
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 35.9132, lng: -79.0558 },
-        zoom: 14
-      });
+      
       if(localStorage.getItem("address") =="default"){
-  codeAddress("702 north columbia street")
+      codeAddress("702 north columbia street")
     } else{
-   codeAddress(localStorage.getItem("address"))
+      codeAddress(localStorage.getItem("address"))
    
     localStorage.setItem("address","default")
     
@@ -74,7 +72,10 @@
       geocoder.geocode({ 'address': address }, function (results, status) {
         
         var latLng = { lat: results[0].geometry.location.lat(), lng: results[0].geometry.location.lng() };
-        
+        var map = new google.maps.Map(document.getElementById('map'), {
+        center: latLng,
+        zoom: 14
+      });
         if (status == 'OK') {
           var marker = new google.maps.Marker({
             position: latLng,
@@ -84,6 +85,7 @@
         } else {
           alert('Geocode was not successful for the following reason: ' + status);
         }
+        
        
       });
    
