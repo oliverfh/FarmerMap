@@ -77,7 +77,7 @@ function renderProfile(data,i) {
 
   }
   
-  $('#userprofile').on('click','#profileDelete', deletePost);
+  $('#deletediv').on('click','#profileDelete', deletePost);
   }
   
   
