@@ -19,20 +19,25 @@ async function login(e) {
     console.log(username);
     console.log(pass);
     //todo: add indication that account trying to be made has already been registered?
-    const result = await axios({
-        method: 'POST',
-        url: 'http://localhost:3000/account/login',
-        data: {
-            "name": username,
-            "pass": pass,
-        }
-    });
-    console.log(result);
-    let token = result.data.jwt;
-    console.log(token);
-    localStorage.setItem('token',token);
-    window.location.href = "/PostPage.html";
-
+    try {
+        const result = await axios({
+            method: 'POST',
+            url: 'http://localhost:3000/account/login',
+            data: {
+                "name": username,
+                "pass": pass,
+            }
+        });
+        console.log(result);
+        let token = result.data.jwt;
+        console.log(token);
+        localStorage.setItem('token',token);
+        window.location.href = "/PostPage.html";
+    
+    } catch (error) {
+        alert("Invalid credentials. Please try again");
+    }
+    
 }
 
     

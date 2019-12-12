@@ -20,6 +20,7 @@ async function makeAccount(e) {
     const pass = $('#pass').val();
     const quote ='';
     //todo: add indication that account trying to be made has already been registered?
+    try {
         const result = await axios({
             method: 'POST',
             url: 'http://localhost:3000/account/create',
@@ -28,12 +29,14 @@ async function makeAccount(e) {
                 "pass": pass,
                 "data": {
                     "fullName": name,
-                    "quote": quote,
                 }
             }
         });
         console.log("success")
         window.location.href = "/index.html";
+    } catch (error) {
+        alert("Username has already been taken. Please try another one.")
+    }
     
     // try{
     //     await axios.post(`/create`,{email,pass,data});
