@@ -183,7 +183,7 @@ cancelListing();
         </div>
           <br/>
           <div>
-          <p>${data.fullName}'s favorite quote:</p><em>${data.quote}</em>
+          <p>${fullName}'s favorite quote:</p><em>${quote}</em>
 
           </div>
         </div>
