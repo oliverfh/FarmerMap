@@ -25,7 +25,6 @@ function renderProfile(data,i) {
       ${data.datetime}
     </div>
       <br/>
-      <button id="profileEdit">Edit</button>
       <button id="profileDelete">Delete</button>
     </div>
   </div>
@@ -68,7 +67,7 @@ for(let i=0; i<result.data.result.length;i++) {
   $('#main').append(`<div align="Center"><h2>Ooops you're not logged in.</h2> <br> <a href="index.html">Click here to login!</a> </div>`);
 }
 
-$('#userprofile').on('click','#profileEdit', editProfile);
+$('#log').on('click','#editprofilebutton', editProfile);
 $('#userprofile').on('click','#profileDelete', deletePost);
 }
 
@@ -83,7 +82,22 @@ function logout() {
 
 }
 async function editProfile() {
-
+  let head = `
+  <div id="postCenter">
+  <div id="mListing",class="card" align="center">
+    <div class="card-content">
+      <div id="toSell",class="content">
+        <h3>What is your favorite quote?</h3>
+        <textarea id="description" class="listinginput"></textarea>
+        <br>
+        <button id="quotesubmit" type="submit">Use as Quote</button>
+        <button id="quotecancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+  </div>
+  `
+$('#theThing').prepend(head);
 }
 
 async function deletePost(e) {

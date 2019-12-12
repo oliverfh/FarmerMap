@@ -18,9 +18,6 @@ async function makeAccount(e) {
     const name = $('#name').val();
     const username = $('#username').val();
     const pass = $('#pass').val();
-    console.log(name);
-    console.log(username);
-    console.log(pass);
     //todo: add indication that account trying to be made has already been registered?
         const result = await axios({
             method: 'POST',
