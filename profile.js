@@ -108,7 +108,7 @@ async function submitQuote(e) {
 async function editProfile() {
   let head = `
   <div id="editcenter">
-  <div id="profilequote",class="card" align="center">
+  <div id="profilequote", data-id="t", class="card" align="center">
     <div class="card-content">
       <div id="toquote",class="content">
         <h3>What is your favorite quote?</h3>
@@ -123,6 +123,8 @@ async function editProfile() {
   `
 $('#profilecenter').prepend(head);
 $('#profilecenter').on('click','#quotecancel',cancelQuote);
+
+
 }
 
 function cancelQuote(e) {
