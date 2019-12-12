@@ -4,7 +4,7 @@ $(function() {
 
 
 async function onLoad() {
-    $('#main').on('click','#makelisting',makeListing);
+    $('#main').on('click','#makechatroompost',makeListing);
     $('#main').on('click','#listingcancel',cancelListing);
     $('#main').on('click','#listingsubmit',handlePost);
 
@@ -68,6 +68,7 @@ async function renderMessages(data) {
 
 async function makeListing(e) {
     let t =(localStorage.getItem('token'));
+    console.log("x")
   
     try {
       const x = await axios({
@@ -97,6 +98,7 @@ async function makeListing(e) {
     } catch (error){
       $("#postCenter").replaceWith(`<div align="center", id="postCenter"><h3>Oops, you aren't logged in! Only logged in users can perform this action.g</h3><br><h3><a href="index.html">Click here to log in</a>
       </div>`);
+      alert("error found")
   
     }
   
