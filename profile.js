@@ -5,7 +5,7 @@ function renderProfile(data,i) {
     <div class="media">
       <div class="media-content">
         <p class="title is-4" align="center">${data.fullName}</p>
-        <p class="subtitle is-6" align="center">@${data.userName}</p>
+        <p class="subtitle is-6" align="center">${data.contactinfo}</p>
       </div>
     </div>    
     <div class="content">
