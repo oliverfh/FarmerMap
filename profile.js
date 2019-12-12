@@ -1,5 +1,6 @@
 function renderProfile(data,i) {
   let head =`
+  <div id="profilecenter"></div>
   <div id="theThing",data-id="${i}",class="card" align="center">
   <div class="card-content">
     <div class="media">
@@ -98,11 +99,12 @@ async function editProfile() {
   </div>
   </div>
   `
-$('#theThing').prepend(head);
+$('#profilecenter').replaceWith(head);
+$('#profilecenter').on('click','#quotecancel',cancelQuote);
 }
 
 function cancelQuote(e) {
-  console.log("test");
+ 
   $("#profilecenter").remove();
 
 }
