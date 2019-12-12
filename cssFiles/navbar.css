@@ -406,3 +406,7 @@ header, .full-width {
 #quotecancel:hover {
   box-shadow: 0 12px 16px 0 red, 0 17px 50px 0 red;
 }
+
+#autocomplete {
+  width: 300px;
+}
