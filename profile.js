@@ -70,7 +70,8 @@ for(let i=0; i<result.data.result.length;i++) {
 
 $('#log').on('click','#editprofilebutton', editProfile);
 $('#userprofile').on('click','#profileDelete', deletePost);
-$('#profilecenter').on('click','#quotecancel',cancelQuote);
+$('#userprofile').on('click','#quotecancel',cancelQuote);
+$('#userprofile').on('click','#quotesubmit',submitQuote);
 }
 
 function logout() {
@@ -83,6 +84,28 @@ function logout() {
 
 
 }
+
+async function submitQuote(e) {
+  let newQuote = $('#description').val();
+  let token = localStorage.getItem('token');
+  const result = await axios({
+    method: 'POST',
+    url: 'http://localhost:3000/user/quote',
+    data: {
+      data: {
+        "quote": newQuote,
+      }
+    },
+    headers: {
+      Authorization: "Bearer " + token
+    }
+});
+  cancelQuote();
+}
+
+
+
+
 async function editProfile() {
   let head = `
   <div id="profilecenter">

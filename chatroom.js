@@ -58,6 +58,10 @@ async function renderMessages(data) {
         </div>
           <br/>
         </div>
+        <div>
+        <p>${data.fullName}'s favorite quote:</p><em>${data.quote}</em>
+
+        </div>
       </div>
     </div>
   </div>
@@ -68,7 +72,7 @@ async function renderMessages(data) {
 
 async function makeListing(e) {
     let t =(localStorage.getItem('token'));
-    console.log("x")
+    //console.log("x")
   
     try {
       const x = await axios({
@@ -130,6 +134,14 @@ async function makeListing(e) {
     });
     let userName = result.data.user.name;
     let fullName = result.data.user.data.fullName;
+    const getQuote = await axios({
+        method: 'GET',
+        url: 'http://localhost:3000/user/quote',
+        headers: {
+            Authorization: "Bearer " + token
+            }
+    });
+   let quote = (getQuote.data.result.quote);
     const r = await axios({
         method: 'POST',
         url: 'http://localhost:3000/private/posts',
@@ -142,16 +154,17 @@ async function makeListing(e) {
             "userName": userName,
             "fullName": fullName,
             "datetime": datetime,
+            "quote": quote,
           },
           type: "merge"
-      
         },
       });
-renderCard(userName, fullName, message, datetime);
+      console.log(r)
+renderCard(userName, fullName, message, datetime, quote);
 cancelListing();
   }
 
-  function renderCard(userName, fullName, message, datetime) {
+  function renderCard(userName, fullName, message, datetime, quote) {
     let head =`
     <div id="rendered",class="card" align="center">
     <div class="card-content">
@@ -169,6 +182,10 @@ cancelListing();
         ${datetime}
         </div>
           <br/>
+          <div>
+          <p>${data.fullName}'s favorite quote:</p><em>${data.quote}</em>
+
+          </div>
         </div>
       </div>
     </div>
